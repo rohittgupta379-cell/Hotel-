@@ -1002,8 +1002,8 @@
                             <span class="nav-text">Floor</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href="Add_">Add Floor</a></li>
-                            <li><a href="post-details.html">Post Details</a></li>
+                            <li><a href="{{ url('Add_floor') }}">Add Floor</a></li>
+                            <li><a href="{{ url('show_floor') }}">Show Fioor</a></li>
                             <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Email</a>
                                 <ul aria-expanded="false">
                                     <li><a href="email-compose.html">Compose</a></li>
