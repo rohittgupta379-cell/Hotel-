@@ -997,7 +997,7 @@
                         </a>
                         <ul aria-expanded="false">
                             <li><a href="{{ url('floors') }}">Floors</a></li>
-                            <li><a href="{{ url('rooms') }}">Rooms</a></li>
+                            <li><a href="{{ url('rooms') }}">Room Map</a></li>
                             <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Email</a>
                                 <ul aria-expanded="false">
                                     <li><a href="email-compose.html">Compose</a></li>

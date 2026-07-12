@@ -26,9 +26,15 @@
                                     class="flaticon-381-search-2"></i></a></span>
                     </div>
                 </div>
-                <a href="javascript:void(0);" class="btn btn-primary mb-xxl-0 mb-4 radius-btn" data-bs-toggle="modal"
-                    data-bs-target="#exampleModal"><i class="far fa-file-word me-2"></i>Add
-                    Floors</a>
+                <div>
+
+                    <a href="javascript:void(0);" class="btn btn-primary mb-xxl-0 mb-4 radius-btn"
+                        data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="far fa-file-word me-2"></i>Add
+                        Floors</a>
+                    <a href="javascript:void(0);" class="btn btn-primary mb-xxl-0 mb-4 radius-btn"
+                        data-bs-toggle="modal" data-bs-target="#roomModal"><i class="far fa-file-word me-2"></i>Add
+                        Rooms</a>
+                </div>
             </div>
             <div class="tab-content">
                 <div class="tab-pane active show" id="floors">
@@ -152,8 +158,8 @@
                                         </td>
                                         <td>
                                             <div class="dropdown dropstart">
-                                                <a href="javascript:void(0);" class="btn-link" data-bs-toggle="dropdown"
-                                                    aria-expanded="false">
+                                                <a href="javascript:void(0);" class="btn-link"
+                                                    data-bs-toggle="dropdown" aria-expanded="false">
                                                     <svg width="24" height="24" viewBox="0 0 24 24"
                                                         fill="none" xmlns="http://www.w3.org/2000/svg">
                                                         <path
@@ -172,9 +178,9 @@
                                                 </a>
                                                 <div class="dropdown-menu">
                                                     <a class="dropdown-item"
-                                                        onclick="editRoom({{ $room->id }},'{{ $room->name }}')">Edit</a>
+                                                        onclick="editRoom({{ $room->id }},'{{ $room->name }}')" data-bs-toggle="modal" data-bs-target="#editRoomModal">Edit</a>
                                                     <a class="dropdown-item"
-                                                        onclick="deleteRoom({{ $room->id }})">Delete</a>
+                                                        onclick="deleteroom({{ $room->id }})">Delete</a>
                                                 </div>
                                             </div>
                                         </td>
@@ -252,6 +258,70 @@
     </div>
 </div>
 
+<!-- Modal -->
+<div class="modal fade" id="roomModal" tabindex="-1" aria-labelledby="roomModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="roomModalLabel">Update Rooms</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+                <form action="/add-rooms" method="POST">
+                    @csrf
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="mb-3">
+                                <label for="" class="form-label">Room Name</label>
+                                <input type="text" name="name" class="form-control"
+                                    placeholder="e.g., Deluxe, Standard, Suite">
+                            </div>
+                        </div>
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger light" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Save changes</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="editRoomModal" tabindex="-1" aria-labelledby="editRoomModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="editRoomModalLabel">Update Room</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="/update-room" method="post">
+                    @csrf
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="mb-3">
+                                <label class="form-label">Room Name</label>
+                                <input type="text" class="form-control" id="room_name" name="name"
+                                    placeholder="">
+                                <input type="hidden" name="id" id="room_id">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger light" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Update changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
 @include('layout.footer');
 <script>
     function editFloor(id, name) {
@@ -262,6 +332,21 @@
     function deleteFloor(id) {
         if (confirm("Are you sure you want to delete this floor?")) {
             window.location.href = '/delete-floor/' + id;
+        }
+    }
+
+
+
+
+     function editRoom(id, name) {
+        $('#room_id').val(id);
+        $('#room_name').val(name);
+    }
+
+
+     function deleteroom(id) {
+        if (confirm("Are you sure you want to delete this room?")) {
+            window.location.href = '/delete-room/' + id;
         }
     }
 </script>

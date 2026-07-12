@@ -9,7 +9,7 @@ class FloorMap extends Model
 {
     use HasFactory;
 
-    protected $table = 'floor_map'; // Remove this line if your table is floor_maps
+    protected $table = 'floor_maps'; // Remove this line if your table is floor_maps
 
     protected $fillable = [
         'floor_id',

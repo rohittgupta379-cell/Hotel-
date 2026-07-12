@@ -12,6 +12,7 @@ class FloorController extends Controller
     {
         $floors = Floor::all();
         $rooms = Room::all();
+
         return view('floor', ['floors' => $floors, 'rooms' => $rooms]);
     }
 
@@ -38,7 +39,7 @@ class FloorController extends Controller
     {
         $floor = Floor::find($id);
 
-        if (!$floor) {
+        if (! $floor) {
             return back()->with('error', 'Floor not found.');
         }
 
@@ -46,7 +47,6 @@ class FloorController extends Controller
 
         return back()->with('success', 'Floor deleted successfully.');
     }
-
 
     public function updateFloor(Request $request)
     {
@@ -62,13 +62,8 @@ class FloorController extends Controller
         return back()->with('success', 'Floor updated successfully.');
     }
 
-    // Add room
 
 
-    public function viewRooms()
-    {
-        return view('rooms');
-    }
     public function addRooms(Request $request)
     {
         $request->validate([
@@ -87,4 +82,36 @@ class FloorController extends Controller
 
         return back()->with('success', 'Room type added successfully.');
     }
+
+    // update room
+
+     public function updateroom(Request $request)
+     {
+         $request->validate([
+             'id' => 'required|exists:rooms,id',
+             'name' => 'required|string|max:255',
+         ]);
+
+         $room = Room::find($request->id);
+
+         $room->name = trim($request->name);
+
+         $room->save();
+
+         return back()->with('success', 'Room updated successfully.');
+     }
+
+// delete room
+  public function deleteroom($id)
+  {
+      $room = Room::find($id);
+
+      if (! $room) {
+          return back()->with('error', 'Room not found.');
+      }
+
+      $room->delete();
+
+      return back()->with('success', 'Room deleted successfully.');
+  }
 }
