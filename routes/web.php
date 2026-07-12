@@ -9,6 +9,11 @@ use App\Http\Controllers\HomeController;
 
 Route::get('/', [HomeController::class, 'home']);
 
-Route::get('/Add_floor', [FloorController::class, 'add_floor']);
-Route::get('/show_floor', [FloorController::class, 'show_floor'])->name('show_floor');
+
+// floor manage
+Route::get('/floors', [FloorController::class, 'viewFloors']);
+Route::post('/add-floor', [FloorController::class, 'addFloor']);
+
+
+Route::get('/rooms', [FloorController::class, 'viewRooms']);
 
