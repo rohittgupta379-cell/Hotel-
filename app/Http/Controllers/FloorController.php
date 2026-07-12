@@ -9,7 +9,9 @@ class FloorController extends Controller
 {
     public function viewFloors()
     {
-        return view('floor');
+        $floors = Floor::all();
+        $rooms = Room::all();
+        return view('floor',['floors' => $floors,'rooms' => $rooms]);
     }
 
     public function addFloor(Request $request)
