@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Floor;
 use App\Models\Room;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class FloorController extends Controller
 {
@@ -62,44 +63,73 @@ class FloorController extends Controller
         return back()->with('success', 'Floor updated successfully.');
     }
 
-
-
     public function addRooms(Request $request)
     {
         $request->validate([
             'name' => 'required|string|max:255',
+            'type_of_room' => 'required|string|max:255',
+            'type_of_bed' => 'required|string|max:255',
+            'feature' => 'required|string|max:255',
+            'image' => 'required|image|mimes:jpg,jpeg,png,webp|max:2048',
         ]);
 
         $existRoom = Room::where('name', trim($request->name))->first();
 
         if ($existRoom) {
-            return back()->with('error', 'Room type already exists.');
+            return back()->with('error', 'Room already exists.');
         }
 
+        // Upload Image to storage/app/public/room_images
+        // store() automatically generates a unique filename
+        $imagePath = $request->file('image')->store('room_images', 'public');
+
+        // Save Data
         Room::create([
             'name' => trim($request->name),
+            'feature' => trim($request->feature),
+            'room_type' => trim($request->type_of_room),
+            'bed_type' => trim($request->type_of_bed),
+            'image' => $imagePath, // This will store something like "room_images/filename.jpg"
         ]);
 
-        return back()->with('success', 'Room type added successfully.');
+        return back()->with('success', 'Room added successfully.');
     }
 
-    // update room
+    // Update Room
+    public function updateroom(Request $request)
+    {
+        $request->validate([
+            'id' => 'required|exists:rooms,id',
+            'name' => 'required|string|max:255',
+            'type_of_room' => 'required|string|max:255',
+            'type_of_bed' => 'required|string|max:255',
+            'feature' => 'required|string|max:255',
+            'image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
+        ]);
 
-     public function updateroom(Request $request)
-     {
-         $request->validate([
-             'id' => 'required|exists:rooms,id',
-             'name' => 'required|string|max:255',
-         ]);
+        $room = Room::findOrFail($request->id);
 
-         $room = Room::find($request->id);
+        $room->name = trim($request->name);
+        $room->room_type = trim($request->type_of_room);
+        $room->bed_type = trim($request->type_of_bed);
+        $room->feature = trim($request->feature);
 
-         $room->name = trim($request->name);
+        // Image Update
+        if ($request->hasFile('image')) {
+            // Delete old image using Storage facade if it exists
+            if ($room->image && Storage::disk('public')->exists($room->image)) {
+                Storage::disk('public')->delete($room->image);
+            }
 
-         $room->save();
+            // Upload new image
+            $imagePath = $request->file('image')->store('room_images', 'public');
+            $room->image = $imagePath;
+        }
 
-         return back()->with('success', 'Room updated successfully.');
-     }
+        $room->save();
+
+        return back()->with('success', 'Room updated successfully.');
+    }
 
 // delete room
   public function deleteroom($id)

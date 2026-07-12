@@ -38,9 +38,11 @@
                             <thead>
                                 <tr>
                                     <th>Sno</th>
+                                    
                                     <th>Room No</th>
                                     <th>Room Type</th>
-                                    <th>Created At</th>
+                                    <th>Bed</th>
+                                    <th>Room Feature</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -50,9 +52,11 @@
                                 @foreach ($floor->floorMaps as $index => $map)
                                     <tr>
                                         <td>{{ ++$index }}</td>
+                                        
                                         <td>{{ $map->room_no }}</td>
-                                        <td>{{ $map->room->name }}</td>
-                                        <td>{{ $map->created_at }}</td>
+                                        <td>{{ $map->room->name }} ({{ $map->room->room_type }})</td>
+                                        <td>{{ $map->room->bed_type }}</td>
+                                        <td>{{ $map->room->feature }}</td>
                                         <td>
                                             <a href="{{ url('delete-room-map', $map->id) }}"
                                                 class="btn btn-danger btn-sm"
