@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Floor;
+use App\Models\Room;
+use Illuminate\Http\Request;
 
 class FloorController extends Controller
 {
@@ -31,9 +32,31 @@ class FloorController extends Controller
         return back()->with('success', 'Floor added successfully.');
     }
 
-    // show floor 
-    public function viewRooms()
+    // Add room
+
+
+     public function viewRooms()
     {
         return view('rooms');
     }
+    public function addRooms(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+        ]);
+
+        $existRoom = Room::where('name', trim($request->name))->first();
+
+        if ($existRoom) {
+            return back()->with('error', 'Room type already exists.');
+        }
+
+        Room::create([
+            'name' => trim($request->name),
+        ]);
+
+        return back()->with('success', 'Room type added successfully.');
+    }
+
+   
 }
