@@ -10,15 +10,10 @@
                     <div class="card-tabs mt-3 mt-sm-0 mb-xxl-0 mb-4">
                         <ul class="nav nav-tabs" role="tablist">
                             <li class="nav-item">
-                                <a class="nav-link active" data-bs-toggle="tab" href="#All" role="tab">All Room
-                                    (457)</a>
+                                <a class="nav-link active" data-bs-toggle="tab" href="#floors" role="tab">All Floors ({{count($floors ?? [])}})</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" data-bs-toggle="tab" href="#Pending" role="tab">Available Room
-                                    (234)</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-bs-toggle="tab" href="#Booked" role="tab">Booked (125)</a>
+                                <a class="nav-link" data-bs-toggle="tab" href="#rooms" role="tab">All Room (({{count($rooms ?? [])}}))</a>
                             </li>
                         </ul>
                     </div>
@@ -34,11 +29,11 @@
                         Floors</a>
                 </div>
                 <div class="tab-content">
-                    <div class="tab-pane active show" id="All">
+                    <div class="tab-pane active show" id="floors">
                         <div class="table-responsive">
                             <table
                                 class="table card-table check-data  display mb-4 dataTablesCard booking-table room-list-tbl table-responsive-lg "
-                                id="guestTable-all">
+                                id="guestTable-floors">
                                 <thead>
                                     <tr>
                                         <th class="bg-none">
@@ -46,15 +41,14 @@
                                                 <input class="form-check-input checkAll" type="checkbox" value="">
                                             </div>
                                         </th>
-                                        <th>Room Name</th>
-                                        <th>Bed Type</th>
-                                        <th>Room Floor</th>
-                                        <th>Room Facility</th>
-                                        <th>Status</th>
+                                        <th>Sno</th>
+                                        <th>Name</th>
+                                        <th>Created At</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @foreach($floors as $index => $floor)
                                     <tr>
                                         <td>
                                             <div class="form-check style-1">
@@ -62,36 +56,18 @@
                                             </div>
                                         </td>
                                         <td>
-                                            <div class="guest-bx">
-                                                <img class="me-3" src="images/hotel/pic11.jpg" alt="">
-                                                <div>
-                                                    <span class="text-primary">#0005</span>
-                                                    <h4 class="mb-0 mt-1"><a class="text-black"
-                                                            href="guest-detail.html">Queen A-0001</a></h4>
-                                                </div>
+                                            <div>
+                                                <span class="fs-16">{{++$index}}</span>
                                             </div>
                                         </td>
                                         <td>
                                             <div>
-                                                <span class="fs-16">Single Bed</span>
+                                                <span class="fs-16">{{$floor->name}}</span>
                                             </div>
                                         </td>
                                         <td>
                                             <div>
-                                                <span class="fs-16">Floor G-05</span>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div>
-
-                                                <span class="fs-16">AC, Shower, Double Bed, Towel, Bathup,<br> Coffee
-                                                    Set, LED TV, Wifi</span>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div>
-                                                <span class="d-block text-success">Available</span>
-                                                <span class="fs-14">Oct 24th - 26th</span>
+                                                <span class="fs-16">{{$floor->created_at}}</span>
                                             </div>
                                         </td>
                                         <td>
@@ -115,329 +91,39 @@
                                                     </svg>
                                                 </a>
                                                 <div class="dropdown-menu">
-                                                    <a class="dropdown-item" href="javascript:void(0);">Edit</a>
-                                                    <a class="dropdown-item" href="javascript:void(0);">Delete</a>
+                                                    <a class="dropdown-item" onclick="editFloor({{ $floor->id }})">Edit</a>
+                                                    <a class="dropdown-item" onclick="deleteFloor({{ $floor->id }})">Delete</a>
                                                 </div>
                                             </div>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="form-check style-1">
-                                                <input class="form-check-input" type="checkbox" value="">
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="guest-bx">
-                                                <img class="me-3" src="images/hotel/pic22.jpg" alt="">
-                                                <div>
-                                                    <span class="text-primary">#00011</span>
-                                                    <h4 class="mb-0 mt-1"><a class="text-black"
-                                                            href="guest-detail.html">Queen A-00011</a></h4>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div>
-                                                <span class="fs-16">Double Bed</span>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div>
-                                                <span class="fs-16">Floor G-11</span>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div>
-
-                                                <span class="fs-16">AC, Shower, Double Bed, Towel, Bathup,<br> Coffee
-                                                    Set, LED TV, Wifi</span>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div>
-                                                <span class="text-danger d-block">Booked</span>
-                                                <span class="fs-14 ">Oct 01th - 26th</span>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="dropdown dropstart">
-                                                <a href="javascript:void(0);" class="btn-link"
-                                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                                    <svg width="24" height="24" viewBox="0 0 24 24"
-                                                        fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <path
-                                                            d="M11 12C11 12.5523 11.4477 13 12 13C12.5523 13 13 12.5523 13 12C13 11.4477 12.5523 11 12 11C11.4477 11 11 11.4477 11 12Z"
-                                                            stroke="#262626" stroke-width="2" stroke-linecap="round"
-                                                            stroke-linejoin="round" />
-                                                        <path
-                                                            d="M18 12C18 12.5523 18.4477 13 19 13C19.5523 13 20 12.5523 20 12C20 11.4477 19.5523 11 19 11C18.4477 11 18 11.4477 18 12Z"
-                                                            stroke="#262626" stroke-width="2" stroke-linecap="round"
-                                                            stroke-linejoin="round" />
-                                                        <path
-                                                            d="M4 12C4 12.5523 4.44772 13 5 13C5.55228 13 6 12.5523 6 12C6 11.4477 5.55228 11 5 11C4.44772 11 4 11.4477 4 12Z"
-                                                            stroke="#262626" stroke-width="2" stroke-linecap="round"
-                                                            stroke-linejoin="round" />
-                                                    </svg>
-                                                </a>
-                                                <div class="dropdown-menu">
-                                                    <a class="dropdown-item" href="javascript:void(0);">Edit</a>
-                                                    <a class="dropdown-item" href="javascript:void(0);">Delete</a>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="form-check style-1">
-                                                <input class="form-check-input" type="checkbox" value="">
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="guest-bx">
-                                                <img class="me-3" src="images/hotel/pic33.jpg" alt="">
-                                                <div>
-                                                    <span class="text-primary">#00012</span>
-                                                    <h4 class="mb-0 mt-1"><a class="text-black"
-                                                            href="guest-detail.html">Queen A-00012</a></h4>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div>
-                                                <span class="fs-16">Single Bed</span>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div>
-                                                <span class="fs-16">Floor G-12</span>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div>
-
-                                                <span class="fs-16">AC, Shower, Single Bed, Towel, Bathup,<br> Coffee
-                                                    Set, LED TV, Wifi</span>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div>
-                                                <span class="text-success d-block">Available</span>
-                                                <span class="fs-14 ">Oct 02th - 26th</span>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="dropdown dropstart">
-                                                <a href="javascript:void(0);" class="btn-link"
-                                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                                    <svg width="24" height="24" viewBox="0 0 24 24"
-                                                        fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <path
-                                                            d="M11 12C11 12.5523 11.4477 13 12 13C12.5523 13 13 12.5523 13 12C13 11.4477 12.5523 11 12 11C11.4477 11 11 11.4477 11 12Z"
-                                                            stroke="#262626" stroke-width="2" stroke-linecap="round"
-                                                            stroke-linejoin="round" />
-                                                        <path
-                                                            d="M18 12C18 12.5523 18.4477 13 19 13C19.5523 13 20 12.5523 20 12C20 11.4477 19.5523 11 19 11C18.4477 11 18 11.4477 18 12Z"
-                                                            stroke="#262626" stroke-width="2" stroke-linecap="round"
-                                                            stroke-linejoin="round" />
-                                                        <path
-                                                            d="M4 12C4 12.5523 4.44772 13 5 13C5.55228 13 6 12.5523 6 12C6 11.4477 5.55228 11 5 11C4.44772 11 4 11.4477 4 12Z"
-                                                            stroke="#262626" stroke-width="2" stroke-linecap="round"
-                                                            stroke-linejoin="round" />
-                                                    </svg>
-                                                </a>
-                                                <div class="dropdown-menu">
-                                                    <a class="dropdown-item" href="javascript:void(0);">Edit</a>
-                                                    <a class="dropdown-item" href="javascript:void(0);">Delete</a>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="form-check style-1">
-                                                <input class="form-check-input" type="checkbox" value="">
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="guest-bx">
-                                                <img class="me-3" src="images/hotel/pic11.jpg" alt="">
-                                                <div>
-                                                    <span class="text-primary">#00013</span>
-                                                    <h4 class="mb-0 mt-1"><a class="text-black"
-                                                            href="guest-detail.html">Queen A-00013</a></h4>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div>
-                                                <span class="fs-16">Double Bed</span>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div>
-                                                <span class="fs-16">Floor G-13</span>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div>
-                                                <span class="fs-16">AC, Shower, Single Bed, Towel, Bathup,<br> Coffee
-                                                    Set, LED TV, Wifi</span>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div>
-                                                <span class="text-danger d-block">Booked</span>
-                                                <span class="fs-14 ">Oct 03th - 26th</span>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="dropdown dropstart">
-                                                <a href="javascript:void(0);" class="btn-link"
-                                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                                    <svg width="24" height="24" viewBox="0 0 24 24"
-                                                        fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <path
-                                                            d="M11 12C11 12.5523 11.4477 13 12 13C12.5523 13 13 12.5523 13 12C13 11.4477 12.5523 11 12 11C11.4477 11 11 11.4477 11 12Z"
-                                                            stroke="#262626" stroke-width="2" stroke-linecap="round"
-                                                            stroke-linejoin="round" />
-                                                        <path
-                                                            d="M18 12C18 12.5523 18.4477 13 19 13C19.5523 13 20 12.5523 20 12C20 11.4477 19.5523 11 19 11C18.4477 11 18 11.4477 18 12Z"
-                                                            stroke="#262626" stroke-width="2" stroke-linecap="round"
-                                                            stroke-linejoin="round" />
-                                                        <path
-                                                            d="M4 12C4 12.5523 4.44772 13 5 13C5.55228 13 6 12.5523 6 12C6 11.4477 5.55228 11 5 11C4.44772 11 4 11.4477 4 12Z"
-                                                            stroke="#262626" stroke-width="2" stroke-linecap="round"
-                                                            stroke-linejoin="round" />
-                                                    </svg>
-                                                </a>
-                                                <div class="dropdown-menu">
-                                                    <a class="dropdown-item" href="javascript:void(0);">Edit</a>
-                                                    <a class="dropdown-item" href="javascript:void(0);">Delete</a>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="form-check style-1">
-                                                <input class="form-check-input" type="checkbox" value="">
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="guest-bx">
-                                                <div id="carouselExampleControls" class="carousel slide me-3"
-                                                    data-bs-ride="carousel">
-                                                    <div class="carousel-inner">
-                                                        <div class="carousel-item active">
-                                                            <img src="images/hotel/pic11.jpg" class="d-block w-100"
-                                                                alt="...">
-                                                        </div>
-                                                        <div class="carousel-item">
-                                                            <img src="images/hotel/pic22.jpg" class="d-block w-100"
-                                                                alt="...">
-                                                        </div>
-                                                        <div class="carousel-item">
-                                                            <img src="images/hotel/pic33.jpg" class="d-block w-100"
-                                                                alt="...">
-                                                        </div>
-                                                    </div>
-                                                    <button class="carousel-control-prev" type="button"
-                                                        data-bs-target="#carouselExampleControls"
-                                                        data-bs-slide="prev">
-                                                        <i class="fas fa-chevron-left text-black"></i>
-                                                    </button>
-                                                    <button class="carousel-control-next" type="button"
-                                                        data-bs-target="#carouselExampleControls"
-                                                        data-bs-slide="next">
-                                                        <i class="fas fa-chevron-right text-black"></i>
-                                                    </button>
-                                                </div>
-                                                <div>
-                                                    <span class="text-primary">#00014</span>
-                                                    <h4 class="mb-0 mt-1"><a class="text-black"
-                                                            href="guest-detail.html">Deluxe B-00014</a></h4>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div>
-                                                <span class="fs-16">Single Bed</span>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div>
-                                                <span class="fs-16">Floor G-05</span>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div>
-
-                                                <span class="fs-16">AC, Shower, Double Bed, Towel, Bathup,<br> Coffee
-                                                    Set, LED TV, Wifi</span>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div>
-                                                <span class="text-success">Available</span>
-
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="dropdown dropstart">
-                                                <a href="javascript:void(0);" class="btn-link"
-                                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                                    <svg width="24" height="24" viewBox="0 0 24 24"
-                                                        fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <path
-                                                            d="M11 12C11 12.5523 11.4477 13 12 13C12.5523 13 13 12.5523 13 12C13 11.4477 12.5523 11 12 11C11.4477 11 11 11.4477 11 12Z"
-                                                            stroke="#262626" stroke-width="2" stroke-linecap="round"
-                                                            stroke-linejoin="round" />
-                                                        <path
-                                                            d="M18 12C18 12.5523 18.4477 13 19 13C19.5523 13 20 12.5523 20 12C20 11.4477 19.5523 11 19 11C18.4477 11 18 11.4477 18 12Z"
-                                                            stroke="#262626" stroke-width="2" stroke-linecap="round"
-                                                            stroke-linejoin="round" />
-                                                        <path
-                                                            d="M4 12C4 12.5523 4.44772 13 5 13C5.55228 13 6 12.5523 6 12C6 11.4477 5.55228 11 5 11C4.44772 11 4 11.4477 4 12Z"
-                                                            stroke="#262626" stroke-width="2" stroke-linecap="round"
-                                                            stroke-linejoin="round" />
-                                                    </svg>
-                                                </a>
-                                                <div class="dropdown-menu">
-                                                    <a class="dropdown-item" href="javascript:void(0);">Edit</a>
-                                                    <a class="dropdown-item" href="javascript:void(0);">Delete</a>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
                     </div>
                 </div>
                 <div class="tab-content">
-                    <div class="tab-pane" id="Pending">
+                    <div class="tab-pane" id="rooms">
                         <div class="table-responsive">
                             <table
-                                class="table card-table check-data  display mb-4 dataTablesCard booking-table room-list-tbl table-responsive-lg"
-                                id="guestTable-all-1">
+                                class="table card-table check-data  display mb-4 dataTablesCard booking-table room-list-tbl table-responsive-lg "
+                                id="guestTable-floors">
                                 <thead>
                                     <tr>
                                         <th class="bg-none">
                                             <div class="form-check style-1">
-                                                <input class="form-check-input checkAll" type="checkbox"
-                                                    value="">
+                                                <input class="form-check-input checkAll" type="checkbox" value="">
                                             </div>
                                         </th>
-                                        <th>Room Name</th>
-                                        <th>Bed Type</th>
-                                        <th>Room Floor</th>
-                                        <th>Room Facility</th>
-                                        <th>Status</th>
+                                        <th>Sno</th>
+                                        <th>Name</th>
+                                        <th>Created At</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @foreach($rooms as $index => $room)
                                     <tr>
                                         <td>
                                             <div class="form-check style-1">
@@ -445,42 +131,24 @@
                                             </div>
                                         </td>
                                         <td>
-                                            <div class="guest-bx">
-                                                <img class="me-3" src="images/hotel/pic11.jpg" alt="">
-                                                <div>
-                                                    <span class="text-primary">#00015</span>
-                                                    <h4 class="mb-0 mt-1"><a class="text-black"
-                                                            href="guest-detail.html">Queen A-00015</a></h4>
-                                                </div>
+                                            <div>
+                                                <span class="fs-16">{{++$index}}</span>
                                             </div>
                                         </td>
                                         <td>
                                             <div>
-                                                <span class="fs-16">Single Bed</span>
+                                                <span class="fs-16">{{$room->name}}</span>
                                             </div>
                                         </td>
                                         <td>
                                             <div>
-                                                <span class="fs-16">Floor G-15</span>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div>
-
-                                                <span class="fs-16">AC, Shower, Double Bed, Towel, Bathup,<br> Coffee
-                                                    Set, LED TV, Wifi</span>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div>
-                                                <span class="d-block text-success">Available</span>
-                                                <span class="fs-14">Oct 05th - 26th</span>
+                                                <span class="fs-16">{{$room->created_at}}</span>
                                             </div>
                                         </td>
                                         <td>
                                             <div class="dropdown dropstart">
-                                                <a href="javascript:void(0);" class="btn-link"
-                                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                                <a href="javascript:void(0);" class="btn-link" data-bs-toggle="dropdown"
+                                                    aria-expanded="false">
                                                     <svg width="24" height="24" viewBox="0 0 24 24"
                                                         fill="none" xmlns="http://www.w3.org/2000/svg">
                                                         <path
@@ -498,690 +166,18 @@
                                                     </svg>
                                                 </a>
                                                 <div class="dropdown-menu">
-                                                    <a class="dropdown-item" href="javascript:void(0);">Edit</a>
-                                                    <a class="dropdown-item" href="javascript:void(0);">Delete</a>
+                                                    <a class="dropdown-item" onclick="editFloor({{ $room->id }})">Edit</a>
+                                                    <a class="dropdown-item" onclick="deleteFloor({{ $room->id }})">Delete</a>
                                                 </div>
                                             </div>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="form-check style-1">
-                                                <input class="form-check-input" type="checkbox" value="">
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="guest-bx">
-                                                <img class="me-3" src="images/hotel/pic22.jpg" alt="">
-                                                <div>
-                                                    <span class="text-primary">#00016</span>
-                                                    <h4 class="mb-0 mt-1"><a class="text-black"
-                                                            href="guest-detail.html">Queen A-00016</a></h4>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div>
-                                                <span class="fs-16">Double Bed</span>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div>
-                                                <span class="fs-16">Floor G-16</span>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div>
-
-                                                <span class="fs-16">AC, Shower, Double Bed, Towel, Bathup,<br> Coffee
-                                                    Set, LED TV, Wifi</span>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div>
-                                                <span class="text-danger d-block">Booked</span>
-                                                <span class="fs-14 ">Oct 16th - 26th</span>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="dropdown dropstart">
-                                                <a href="javascript:void(0);" class="btn-link"
-                                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                                    <svg width="24" height="24" viewBox="0 0 24 24"
-                                                        fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <path
-                                                            d="M11 12C11 12.5523 11.4477 13 12 13C12.5523 13 13 12.5523 13 12C13 11.4477 12.5523 11 12 11C11.4477 11 11 11.4477 11 12Z"
-                                                            stroke="#262626" stroke-width="2" stroke-linecap="round"
-                                                            stroke-linejoin="round" />
-                                                        <path
-                                                            d="M18 12C18 12.5523 18.4477 13 19 13C19.5523 13 20 12.5523 20 12C20 11.4477 19.5523 11 19 11C18.4477 11 18 11.4477 18 12Z"
-                                                            stroke="#262626" stroke-width="2" stroke-linecap="round"
-                                                            stroke-linejoin="round" />
-                                                        <path
-                                                            d="M4 12C4 12.5523 4.44772 13 5 13C5.55228 13 6 12.5523 6 12C6 11.4477 5.55228 11 5 11C4.44772 11 4 11.4477 4 12Z"
-                                                            stroke="#262626" stroke-width="2" stroke-linecap="round"
-                                                            stroke-linejoin="round" />
-                                                    </svg>
-                                                </a>
-                                                <div class="dropdown-menu">
-                                                    <a class="dropdown-item" href="javascript:void(0);">Edit</a>
-                                                    <a class="dropdown-item" href="javascript:void(0);">Delete</a>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="form-check style-1">
-                                                <input class="form-check-input" type="checkbox" value="">
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="guest-bx">
-                                                <img class="me-3" src="images/hotel/pic33.jpg" alt="">
-                                                <div>
-                                                    <span class="text-primary">#00017</span>
-                                                    <h4 class="mb-0 mt-1"><a class="text-black"
-                                                            href="guest-detail.html">Queen A-00017</a></h4>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div>
-                                                <span class="fs-16">Double Bed</span>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div>
-                                                <span class="fs-16">Floor G-17</span>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div>
-
-                                                <span class="fs-16">AC, Shower, Double Bed, Towel, Bathup,<br> Coffee
-                                                    Set, LED TV, Wifi</span>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div>
-                                                <span class="text-success d-block">Available</span>
-                                                <span class="fs-14 ">Oct 17th - 26th</span>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="dropdown dropstart">
-                                                <a href="javascript:void(0);" class="btn-link"
-                                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                                    <svg width="24" height="24" viewBox="0 0 24 24"
-                                                        fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <path
-                                                            d="M11 12C11 12.5523 11.4477 13 12 13C12.5523 13 13 12.5523 13 12C13 11.4477 12.5523 11 12 11C11.4477 11 11 11.4477 11 12Z"
-                                                            stroke="#262626" stroke-width="2" stroke-linecap="round"
-                                                            stroke-linejoin="round" />
-                                                        <path
-                                                            d="M18 12C18 12.5523 18.4477 13 19 13C19.5523 13 20 12.5523 20 12C20 11.4477 19.5523 11 19 11C18.4477 11 18 11.4477 18 12Z"
-                                                            stroke="#262626" stroke-width="2" stroke-linecap="round"
-                                                            stroke-linejoin="round" />
-                                                        <path
-                                                            d="M4 12C4 12.5523 4.44772 13 5 13C5.55228 13 6 12.5523 6 12C6 11.4477 5.55228 11 5 11C4.44772 11 4 11.4477 4 12Z"
-                                                            stroke="#262626" stroke-width="2" stroke-linecap="round"
-                                                            stroke-linejoin="round" />
-                                                    </svg>
-                                                </a>
-                                                <div class="dropdown-menu">
-                                                    <a class="dropdown-item" href="javascript:void(0);">Edit</a>
-                                                    <a class="dropdown-item" href="javascript:void(0);">Delete</a>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="form-check style-1">
-                                                <input class="form-check-input" type="checkbox" value="">
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="guest-bx">
-                                                <img class="me-3" src="images/hotel/pic11.jpg" alt="">
-                                                <div>
-                                                    <span class="text-primary">#00018</span>
-                                                    <h4 class="mb-0 mt-1"><a class="text-black"
-                                                            href="guest-detail.html">Queen A-00018</a></h4>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div>
-                                                <span class="fs-16">Double Bed</span>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div>
-                                                <span class="fs-16">Floor G-18</span>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div>
-                                                <span class="fs-16">AC, Shower, Double Bed, Towel, Bathup,<br> Coffee
-                                                    Set, LED TV, Wifi</span>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div>
-                                                <span class="text-danger d-block">Booked</span>
-                                                <span class="fs-14 ">Oct 18th - 26th</span>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="dropdown dropstart">
-                                                <a href="javascript:void(0);" class="btn-link"
-                                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                                    <svg width="24" height="24" viewBox="0 0 24 24"
-                                                        fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <path
-                                                            d="M11 12C11 12.5523 11.4477 13 12 13C12.5523 13 13 12.5523 13 12C13 11.4477 12.5523 11 12 11C11.4477 11 11 11.4477 11 12Z"
-                                                            stroke="#262626" stroke-width="2" stroke-linecap="round"
-                                                            stroke-linejoin="round" />
-                                                        <path
-                                                            d="M18 12C18 12.5523 18.4477 13 19 13C19.5523 13 20 12.5523 20 12C20 11.4477 19.5523 11 19 11C18.4477 11 18 11.4477 18 12Z"
-                                                            stroke="#262626" stroke-width="2" stroke-linecap="round"
-                                                            stroke-linejoin="round" />
-                                                        <path
-                                                            d="M4 12C4 12.5523 4.44772 13 5 13C5.55228 13 6 12.5523 6 12C6 11.4477 5.55228 11 5 11C4.44772 11 4 11.4477 4 12Z"
-                                                            stroke="#262626" stroke-width="2" stroke-linecap="round"
-                                                            stroke-linejoin="round" />
-                                                    </svg>
-                                                </a>
-                                                <div class="dropdown-menu">
-                                                    <a class="dropdown-item" href="javascript:void(0);">Edit</a>
-                                                    <a class="dropdown-item" href="javascript:void(0);">Delete</a>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="form-check style-1">
-                                                <input class="form-check-input" type="checkbox" value="">
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="guest-bx">
-                                                <div id="carouselExampleControls-1" class="carousel slide me-3"
-                                                    data-bs-ride="carousel">
-                                                    <div class="carousel-inner">
-                                                        <div class="carousel-item active">
-                                                            <img src="images/hotel/pic11.jpg" class="d-block w-100"
-                                                                alt="...">
-                                                        </div>
-                                                        <div class="carousel-item">
-                                                            <img src="images/hotel/pic22.jpg" class="d-block w-100"
-                                                                alt="...">
-                                                        </div>
-                                                        <div class="carousel-item">
-                                                            <img src="images/hotel/pic33.jpg" class="d-block w-100"
-                                                                alt="...">
-                                                        </div>
-                                                    </div>
-                                                    <button class="carousel-control-prev" type="button"
-                                                        data-bs-target="#carouselExampleControls-1"
-                                                        data-bs-slide="prev">
-                                                        <i class="fas fa-chevron-left text-black"></i>
-                                                    </button>
-                                                    <button class="carousel-control-next" type="button"
-                                                        data-bs-target="#carouselExampleControls-1"
-                                                        data-bs-slide="next">
-                                                        <i class="fas fa-chevron-right text-black"></i>
-                                                    </button>
-                                                </div>
-                                                <div>
-                                                    <span class="text-primary">#00019</span>
-                                                    <h4 class="mb-0 mt-1"><a class="text-black"
-                                                            href="guest-detail.html">Deluxe B-00019</a></h4>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div>
-                                                <span class="fs-16">Double Bed</span>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div>
-                                                <span class="fs-16">Floor G-19</span>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div>
-
-                                                <span class="fs-16">AC, Shower, Double Bed, Towel, Bathup,<br> Coffee
-                                                    Set, LED TV, Wifi</span>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div>
-                                                <span class="text-success">Available</span>
-
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="dropdown dropstart">
-                                                <a href="javascript:void(0);" class="btn-link"
-                                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                                    <svg width="24" height="24" viewBox="0 0 24 24"
-                                                        fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <path
-                                                            d="M11 12C11 12.5523 11.4477 13 12 13C12.5523 13 13 12.5523 13 12C13 11.4477 12.5523 11 12 11C11.4477 11 11 11.4477 11 12Z"
-                                                            stroke="#262626" stroke-width="2" stroke-linecap="round"
-                                                            stroke-linejoin="round" />
-                                                        <path
-                                                            d="M18 12C18 12.5523 18.4477 13 19 13C19.5523 13 20 12.5523 20 12C20 11.4477 19.5523 11 19 11C18.4477 11 18 11.4477 18 12Z"
-                                                            stroke="#262626" stroke-width="2" stroke-linecap="round"
-                                                            stroke-linejoin="round" />
-                                                        <path
-                                                            d="M4 12C4 12.5523 4.44772 13 5 13C5.55228 13 6 12.5523 6 12C6 11.4477 5.55228 11 5 11C4.44772 11 4 11.4477 4 12Z"
-                                                            stroke="#262626" stroke-width="2" stroke-linecap="round"
-                                                            stroke-linejoin="round" />
-                                                    </svg>
-                                                </a>
-                                                <div class="dropdown-menu">
-                                                    <a class="dropdown-item" href="javascript:void(0);">Edit</a>
-                                                    <a class="dropdown-item" href="javascript:void(0);">Delete</a>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
                     </div>
                 </div>
-                <div class="tab-content">
-                    <div class="tab-pane" id="Booked">
-                        <div class="table-responsive">
-                            <table
-                                class="table card-table check-data  display mb-4 dataTablesCard booking-table room-list-tbl table-responsive-lg"
-                                id="guestTable-all-2">
-                                <thead>
-                                    <tr>
-                                        <th class="bg-none">
-                                            <div class="form-check style-1">
-                                                <input class="form-check-input checkAll" type="checkbox"
-                                                    value="">
-                                            </div>
-                                        </th>
-                                        <th>Room Name</th>
-                                        <th>Bed Type</th>
-                                        <th>Room Floor</th>
-                                        <th>Room Facility</th>
-                                        <th>Status</th>
-                                        <th>Actions</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            <div class="form-check style-1">
-                                                <input class="form-check-input" type="checkbox" value="">
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="guest-bx">
-                                                <img class="me-3" src="images/hotel/pic11.jpg" alt="">
-                                                <div>
-                                                    <span class="text-primary">#00028</span>
-                                                    <h4 class="mb-0 mt-1"><a class="text-black"
-                                                            href="guest-detail.html">Queen A-00028</a></h4>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div>
-                                                <span class="fs-16">Single Bed</span>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div>
-                                                <span class="fs-16">Floor G-05</span>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div>
-
-                                                <span class="fs-16">AC, Shower, Double Bed, Towel, Bathup,<br> Coffee
-                                                    Set, LED TV, Wifi</span>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div>
-                                                <span class="d-block text-danger">Booked</span>
-                                                <span class="fs-14">Oct 28th - 26th</span>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="dropdown dropstart">
-                                                <a href="javascript:void(0);" class="btn-link"
-                                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                                    <svg width="24" height="24" viewBox="0 0 24 24"
-                                                        fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <path
-                                                            d="M11 12C11 12.5523 11.4477 13 12 13C12.5523 13 13 12.5523 13 12C13 11.4477 12.5523 11 12 11C11.4477 11 11 11.4477 11 12Z"
-                                                            stroke="#262626" stroke-width="2" stroke-linecap="round"
-                                                            stroke-linejoin="round" />
-                                                        <path
-                                                            d="M18 12C18 12.5523 18.4477 13 19 13C19.5523 13 20 12.5523 20 12C20 11.4477 19.5523 11 19 11C18.4477 11 18 11.4477 18 12Z"
-                                                            stroke="#262626" stroke-width="2" stroke-linecap="round"
-                                                            stroke-linejoin="round" />
-                                                        <path
-                                                            d="M4 12C4 12.5523 4.44772 13 5 13C5.55228 13 6 12.5523 6 12C6 11.4477 5.55228 11 5 11C4.44772 11 4 11.4477 4 12Z"
-                                                            stroke="#262626" stroke-width="2" stroke-linecap="round"
-                                                            stroke-linejoin="round" />
-                                                    </svg>
-                                                </a>
-                                                <div class="dropdown-menu">
-                                                    <a class="dropdown-item" href="javascript:void(0);">Edit</a>
-                                                    <a class="dropdown-item" href="javascript:void(0);">Delete</a>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="form-check style-1">
-                                                <input class="form-check-input" type="checkbox" value="">
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="guest-bx">
-                                                <img class="me-3" src="images/hotel/pic22.jpg" alt="">
-                                                <div>
-                                                    <span class="text-primary">#00029</span>
-                                                    <h4 class="mb-0 mt-1"><a class="text-black"
-                                                            href="guest-detail.html">Queen A-00029</a></h4>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div>
-                                                <span class="fs-16">Single Bed</span>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div>
-                                                <span class="fs-16">Floor G-29</span>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div>
-
-                                                <span class="fs-16">AC, Shower, Single Bed, Towel, Bathup,<br> Coffee
-                                                    Set, LED TV, Wifi</span>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div>
-                                                <span class="text-success d-block">Available</span>
-                                                <span class="fs-14 ">Oct 29th - 27th</span>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="dropdown dropstart">
-                                                <a href="javascript:void(0);" class="btn-link"
-                                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                                    <svg width="24" height="24" viewBox="0 0 24 24"
-                                                        fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <path
-                                                            d="M11 12C11 12.5523 11.4477 13 12 13C12.5523 13 13 12.5523 13 12C13 11.4477 12.5523 11 12 11C11.4477 11 11 11.4477 11 12Z"
-                                                            stroke="#262626" stroke-width="2" stroke-linecap="round"
-                                                            stroke-linejoin="round" />
-                                                        <path
-                                                            d="M18 12C18 12.5523 18.4477 13 19 13C19.5523 13 20 12.5523 20 12C20 11.4477 19.5523 11 19 11C18.4477 11 18 11.4477 18 12Z"
-                                                            stroke="#262626" stroke-width="2" stroke-linecap="round"
-                                                            stroke-linejoin="round" />
-                                                        <path
-                                                            d="M4 12C4 12.5523 4.44772 13 5 13C5.55228 13 6 12.5523 6 12C6 11.4477 5.55228 11 5 11C4.44772 11 4 11.4477 4 12Z"
-                                                            stroke="#262626" stroke-width="2" stroke-linecap="round"
-                                                            stroke-linejoin="round" />
-                                                    </svg>
-                                                </a>
-                                                <div class="dropdown-menu">
-                                                    <a class="dropdown-item" href="javascript:void(0);">Edit</a>
-                                                    <a class="dropdown-item" href="javascript:void(0);">Delete</a>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="form-check style-1">
-                                                <input class="form-check-input" type="checkbox" value="">
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="guest-bx">
-                                                <img class="me-3" src="images/hotel/pic33.jpg" alt="">
-                                                <div>
-                                                    <span class="text-primary">#0030</span>
-                                                    <h4 class="mb-0 mt-1"><a class="text-black"
-                                                            href="guest-detail.html">Queen A-00030</a></h4>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div>
-                                                <span class="fs-16">Double Bed</span>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div>
-                                                <span class="fs-16">Floor G-30</span>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div>
-
-                                                <span class="fs-16">AC, Shower, Double Bed, Towel, Bathup,<br> Coffee
-                                                    Set, LED TV, Wifi</span>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div>
-                                                <span class="text-danger d-block">Booked</span>
-                                                <span class="fs-14 ">Oct 19th - 26th</span>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="dropdown dropstart">
-                                                <a href="javascript:void(0);" class="btn-link"
-                                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                                    <svg width="24" height="24" viewBox="0 0 24 24"
-                                                        fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <path
-                                                            d="M11 12C11 12.5523 11.4477 13 12 13C12.5523 13 13 12.5523 13 12C13 11.4477 12.5523 11 12 11C11.4477 11 11 11.4477 11 12Z"
-                                                            stroke="#262626" stroke-width="2" stroke-linecap="round"
-                                                            stroke-linejoin="round" />
-                                                        <path
-                                                            d="M18 12C18 12.5523 18.4477 13 19 13C19.5523 13 20 12.5523 20 12C20 11.4477 19.5523 11 19 11C18.4477 11 18 11.4477 18 12Z"
-                                                            stroke="#262626" stroke-width="2" stroke-linecap="round"
-                                                            stroke-linejoin="round" />
-                                                        <path
-                                                            d="M4 12C4 12.5523 4.44772 13 5 13C5.55228 13 6 12.5523 6 12C6 11.4477 5.55228 11 5 11C4.44772 11 4 11.4477 4 12Z"
-                                                            stroke="#262626" stroke-width="2" stroke-linecap="round"
-                                                            stroke-linejoin="round" />
-                                                    </svg>
-                                                </a>
-                                                <div class="dropdown-menu">
-                                                    <a class="dropdown-item" href="javascript:void(0);">Edit</a>
-                                                    <a class="dropdown-item" href="javascript:void(0);">Delete</a>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="form-check style-1">
-                                                <input class="form-check-input" type="checkbox" value="">
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="guest-bx">
-                                                <img class="me-3" src="images/hotel/pic11.jpg" alt="">
-                                                <div>
-                                                    <span class="text-primary">#00040</span>
-                                                    <h4 class="mb-0 mt-1"><a class="text-black"
-                                                            href="guest-detail.html">Queen A-00040</a></h4>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div>
-                                                <span class="fs-16">Single Bed</span>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div>
-                                                <span class="fs-16">Floor G-040</span>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div>
-                                                <span class="fs-16">AC, Shower, Single Bed, Towel, Bathup,<br> Coffee
-                                                    Set, LED TV, Wifi</span>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div>
-                                                <span class="text-danger d-block">Booked</span>
-                                                <span class="fs-14 ">Oct 08th - 26th</span>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="dropdown dropstart">
-                                                <a href="javascript:void(0);" class="btn-link"
-                                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                                    <svg width="24" height="24" viewBox="0 0 24 24"
-                                                        fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <path
-                                                            d="M11 12C11 12.5523 11.4477 13 12 13C12.5523 13 13 12.5523 13 12C13 11.4477 12.5523 11 12 11C11.4477 11 11 11.4477 11 12Z"
-                                                            stroke="#262626" stroke-width="2" stroke-linecap="round"
-                                                            stroke-linejoin="round" />
-                                                        <path
-                                                            d="M18 12C18 12.5523 18.4477 13 19 13C19.5523 13 20 12.5523 20 12C20 11.4477 19.5523 11 19 11C18.4477 11 18 11.4477 18 12Z"
-                                                            stroke="#262626" stroke-width="2" stroke-linecap="round"
-                                                            stroke-linejoin="round" />
-                                                        <path
-                                                            d="M4 12C4 12.5523 4.44772 13 5 13C5.55228 13 6 12.5523 6 12C6 11.4477 5.55228 11 5 11C4.44772 11 4 11.4477 4 12Z"
-                                                            stroke="#262626" stroke-width="2" stroke-linecap="round"
-                                                            stroke-linejoin="round" />
-                                                    </svg>
-                                                </a>
-                                                <div class="dropdown-menu">
-                                                    <a class="dropdown-item" href="javascript:void(0);">Edit</a>
-                                                    <a class="dropdown-item" href="javascript:void(0);">Delete</a>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="form-check style-1">
-                                                <input class="form-check-input" type="checkbox" value="">
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="guest-bx">
-                                                <div id="carouselExampleControls-2" class="carousel slide me-3"
-                                                    data-bs-ride="carousel">
-                                                    <div class="carousel-inner">
-                                                        <div class="carousel-item active">
-                                                            <img src="images/hotel/pic11.jpg" class="d-block w-100"
-                                                                alt="...">
-                                                        </div>
-                                                        <div class="carousel-item">
-                                                            <img src="images/hotel/pic22.jpg" class="d-block w-100"
-                                                                alt="...">
-                                                        </div>
-                                                        <div class="carousel-item">
-                                                            <img src="images/hotel/pic33.jpg" class="d-block w-100"
-                                                                alt="...">
-                                                        </div>
-                                                    </div>
-                                                    <button class="carousel-control-prev" type="button"
-                                                        data-bs-target="#carouselExampleControls-2"
-                                                        data-bs-slide="prev">
-                                                        <i class="fas fa-chevron-left text-black"></i>
-                                                    </button>
-                                                    <button class="carousel-control-next" type="button"
-                                                        data-bs-target="#carouselExampleControls-2"
-                                                        data-bs-slide="next">
-                                                        <i class="fas fa-chevron-right text-black"></i>
-                                                    </button>
-                                                </div>
-                                                <div>
-                                                    <span class="text-primary">#00050</span>
-                                                    <h4 class="mb-0 mt-1"><a class="text-black"
-                                                            href="guest-detail.html">Deluxe B-00050</a></h4>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div>
-                                                <span class="fs-16">Double Bed</span>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div>
-                                                <span class="fs-16">Floor G-50</span>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div>
-
-                                                <span class="fs-16">AC, Shower, Double Bed, Towel, Bathup,<br> Coffee
-                                                    Set, LED TV, Wifi</span>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div>
-                                                <span class="text-success">Available</span>
-
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="dropdown dropstart">
-                                                <a href="javascript:void(0);" class="btn-link"
-                                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                                    <svg width="24" height="24" viewBox="0 0 24 24"
-                                                        fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <path
-                                                            d="M11 12C11 12.5523 11.4477 13 12 13C12.5523 13 13 12.5523 13 12C13 11.4477 12.5523 11 12 11C11.4477 11 11 11.4477 11 12Z"
-                                                            stroke="#262626" stroke-width="2" stroke-linecap="round"
-                                                            stroke-linejoin="round" />
-                                                        <path
-                                                            d="M18 12C18 12.5523 18.4477 13 19 13C19.5523 13 20 12.5523 20 12C20 11.4477 19.5523 11 19 11C18.4477 11 18 11.4477 18 12Z"
-                                                            stroke="#262626" stroke-width="2" stroke-linecap="round"
-                                                            stroke-linejoin="round" />
-                                                        <path
-                                                            d="M4 12C4 12.5523 4.44772 13 5 13C5.55228 13 6 12.5523 6 12C6 11.4477 5.55228 11 5 11C4.44772 11 4 11.4477 4 12Z"
-                                                            stroke="#262626" stroke-width="2" stroke-linecap="round"
-                                                            stroke-linejoin="round" />
-                                                    </svg>
-                                                </a>
-                                                <div class="dropdown-menu">
-                                                    <a class="dropdown-item" href="javascript:void(0);">Edit</a>
-                                                    <a class="dropdown-item" href="javascript:void(0);">Delete</a>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-
             </div>
         </div>
     </div>
