@@ -39,13 +39,6 @@
 <body>
 
 
-
-
-
-
-
-
-
     <!--**********************************
         Main wrapper start
     ***********************************-->
@@ -868,7 +861,8 @@
                                                 <a class="timeline-panel text-muted" href="javascript:void(0);">
                                                     <span>10 minutes ago</span>
                                                     <h6 class="mb-0">Youtube, a video-sharing website, goes live
-                                                        <strong class="text-primary">$500</strong>.</h6>
+                                                        <strong class="text-primary">$500</strong>.
+                                                    </h6>
                                                 </a>
                                             </li>
                                             <li>
@@ -999,11 +993,11 @@
                     </li>
                     <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
                             <i class="flaticon-050-info"></i>
-                            <span class="nav-text">Floor</span>
+                            <span class="nav-text">Room Management</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href="{{ url('Add_floor') }}">Add Floor</a></li>
-                            <li><a href="{{ url('show_floor') }}">Show Fioor</a></li>
+                            <li><a href="{{ url('floors') }}">Floors</a></li>
+                            <li><a href="{{ url('rooms') }}">Rooms</a></li>
                             <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Email</a>
                                 <ul aria-expanded="false">
                                     <li><a href="email-compose.html">Compose</a></li>
@@ -1132,3 +1126,28 @@
         <!--**********************************
             Sidebar end
         ***********************************-->
+
+        <!--**********************************
+        Content body start
+        ***********************************-->
+        <div class="content-body">
+
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul class="mb-0">
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+            @if (session('error'))
+                <div class="alert alert-danger">
+                    {{ session('error') }}
+                </div>
+            @endif
+            @if (session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif

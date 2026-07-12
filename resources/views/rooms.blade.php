@@ -1,10 +1,7 @@
 @include('layout.header');
 
 
-<!--**********************************
-            Content body start
-        ***********************************-->
-        <div class="content-body">
+
             <!-- row -->
 			<div class="container-fluid">
 				<div class="row">
@@ -956,7 +953,7 @@
 					</div>
 				</div>
             </div>
-        </div>
+        
         <!--**********************************
             Content body end
         ***********************************-->

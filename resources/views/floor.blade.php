@@ -1,10 +1,7 @@
 @include('layout.header');
 
 
-<!--**********************************
-            Content body start
-        ***********************************-->
-<div class="content-body">
+
     <!-- row -->
     <div class="container-fluid">
         <div class="row">
@@ -33,8 +30,8 @@
                         </div>
                     </div>
                     <a href="javascript:void(0);" class="btn btn-primary mb-xxl-0 mb-4 radius-btn"
-                        data-bs-toggle="modal" data-bs-target="#exampleModal"><i
-                            class="far fa-file-word me-2"></i>Generate Report</a>
+                        data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="far fa-file-word me-2"></i>Add
+                        Floors</a>
                 </div>
                 <div class="tab-content">
                     <div class="tab-pane active show" id="All">
@@ -1188,49 +1185,33 @@
             </div>
         </div>
     </div>
-</div>
-<!--**********************************
-            Content body end
-        ***********************************-->
+
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Report</h1>
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Add Floor</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <div class="row">
-                    <div class="col-xl-12">
-                        <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label">Room Facility</label>
-                            <input type="text" class="form-control" id="exampleFormControlInput1"
-                                placeholder="AC, Shower, Double Bed, Towel, Bathup,Coffee Set, LED TV, Wifi">
+                <form action="/add-floor" method="post">
+                    @csrf
+
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="mb-3">
+                                <label for="" class="form-label">Floor Name</label>
+                                <input type="text" class="form-control" name="name" placeholder="First Floor, Ground Floor,etc">
+                            </div>
                         </div>
                     </div>
-                    <div class="col-xl-6">
-                        <label class="form-label d-block">Bed Type</label>
-                        <select class="nice-select me-sm-2 default-select form-control wide"
-                            aria-label="Default select example">
-                            <option selected>Bed Type</option>
-                            <option value="1">Single Bed</option>
-                            <option value="2">Double Bed</option>
-                        </select>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger light" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
                     </div>
-                    <div class="col-xl-6">
-                        <div class="mb-3">
-                            <label for="exampleFormControlInput2" class="form-label">Room Floor</label>
-                            <input type="text" class="form-control" id="exampleFormControlInput2"
-                                placeholder="Floor G-05">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger light" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                </form>
             </div>
         </div>
     </div>
