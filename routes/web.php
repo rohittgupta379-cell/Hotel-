@@ -16,4 +16,5 @@ Route::post('/add-floor', [FloorController::class, 'addFloor']);
 
 
 Route::get('/rooms', [FloorController::class, 'viewRooms']);
+Route::post('/add-rooms', [FloorController::class, 'addRooms']);
 
