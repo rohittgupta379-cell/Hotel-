@@ -13,6 +13,8 @@ Route::get('/', [HomeController::class, 'home']);
 // floor manage
 Route::get('/floors', [FloorController::class, 'viewFloors']);
 Route::post('/add-floor', [FloorController::class, 'addFloor']);
+Route::post('/update-floor', [FloorController::class, 'updateFloor']);
+Route::get('/delete-floor/{id}', [FloorController::class, 'deleteFloor']);
 
 
 Route::get('/rooms', [FloorController::class, 'viewRooms']);
