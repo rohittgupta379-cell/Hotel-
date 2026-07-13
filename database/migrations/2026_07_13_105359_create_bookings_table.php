@@ -20,8 +20,8 @@ return new class extends Migration
             $table->integer('total_guests');
             $table->string('phone', 15);
             $table->string('email')->nullable();
-            $table->timestamp('check_in');
-            $table->timestamp('check_out')->nullable();
+            $table->datetime('check_in');
+            $table->datetime('check_out')->nullable();
             $table->decimal('total_amount', 10, 2)->default(0);
             $table->enum('payment_status', ['pending', 'paid', 'failed'])->default('pending');
             $table->timestamps();

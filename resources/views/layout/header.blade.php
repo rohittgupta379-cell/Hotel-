@@ -991,6 +991,8 @@
                         </ul>
 
                     </li>
+
+                    {{-- room management --}}
                     <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
                             <i class="flaticon-050-info"></i>
                             <span class="nav-text">Room Management</span>
@@ -998,40 +1000,27 @@
                         <ul aria-expanded="false">
                             <li><a href="{{ url('floors') }}">Floors</a></li>
                             <li><a href="{{ url('rooms') }}">Room Map</a></li>
-                            <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Email</a>
-                                <ul aria-expanded="false">
-                                    <li><a href="email-compose.html">Compose</a></li>
-                                    <li><a href="email-inbox.html">Inbox</a></li>
-                                    <li><a href="email-read.html">Read</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="app-calender.html">Calendar</a></li>
-                            <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Shop</a>
-                                <ul aria-expanded="false">
-                                    <li><a href="ecom-product-grid.html">Product Grid</a></li>
-                                    <li><a href="ecom-product-list.html">Product List</a></li>
-                                    <li><a href="ecom-product-detail.html">Product Details</a></li>
-                                    <li><a href="ecom-product-order.html">Order</a></li>
-                                    <li><a href="ecom-checkout.html">Checkout</a></li>
-                                    <li><a href="ecom-invoice.html">Invoice</a></li>
-                                    <li><a href="ecom-customers.html">Customers</a></li>
-                                </ul>
-                            </li>
+                    
                         </ul>
                     </li>
+                    {{-- room management end --}}
+
+
+
+                    {{-- Booking history --}}
                     <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
                             <i class="flaticon-041-graph"></i>
-                            <span class="nav-text">Charts</span>
+                            <span class="nav-text">Booking History</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href="chart-flot.html">Flot</a></li>
-                            <li><a href="chart-morris.html">Morris</a></li>
-                            <li><a href="chart-chartjs.html">Chartjs</a></li>
-                            <li><a href="chart-chartist.html">Chartist</a></li>
-                            <li><a href="chart-sparkline.html">Sparkline</a></li>
-                            <li><a href="chart-peity.html">Peity</a></li>
+                            <li><a href="">Guest History</a></li>
+                            <li><a href="chart-morris.html">Room History</a></li>
+                           
                         </ul>
                     </li>
+                    {{-- Booking end history --}}
+
+
                     <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
                             <i class="flaticon-086-star"></i>
                             <span class="nav-text">Bootstrap</span>

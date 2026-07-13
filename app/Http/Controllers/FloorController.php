@@ -132,16 +132,16 @@ class FloorController extends Controller
     }
 
 // delete room
-  public function deleteroom($id)
-  {
-      $room = Room::find($id);
+    public function deleteroom($id)
+    {
+        $room = Room::find($id);
 
-      if (! $room) {
-          return back()->with('error', 'Room not found.');
-      }
+        if (! $room) {
+            return back()->with('error', 'Room not found.');
+        }
 
-      $room->delete();
+        $room->delete();
 
-      return back()->with('success', 'Room deleted successfully.');
-  }
+        return back()->with('success', 'Room deleted successfully.');
+    }
 }
