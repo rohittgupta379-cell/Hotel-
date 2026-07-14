@@ -123,103 +123,53 @@
             {{-- Show room --}}
             <div class="tab-content">
                 <div class="tab-pane" id="rooms">
-                    <div class="table-responsive">
-                        <table
-                            class="table card-table check-data  display mb-4 dataTablesCard booking-table room-list-tbl table-responsive-lg "
-                            id="guestTable-floors">
-                            <thead>
-                                <tr>
-                                    <th class="bg-none">
-                                        <div class="form-check style-1">
-                                            <input class="form-check-input checkAll" type="checkbox" value="">
+                    <div class="row">
+                        @foreach ($rooms as $room)
+                            <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
+                                <div class="card room-card shadow-sm border-0">
+
+                                    <div class="position-relative">
+                                        <img src="{{ asset('storage/' . $room->image) }}" class="card-img-top room-image" height="200px">
+                                    </div>
+
+                                    <div class="card-body">
+
+                                        <h5 class="fw-bold mb-1">{{ $room->name }}</h5>
+
+                                        <small class="text-muted">
+                                            {{ $room->room_type }}
+                                        </small>
+
+                                        <hr class="m-0">
+
+                                        <div class="d-flex justify-content-between mb-2">
+                                            <span>🛏 {{ $room->bed_type }}</span>
+                                            <span>❄ {{ $room->room_type }}</span>
                                         </div>
-                                    </th>
-                                    <th>Sno</th>
-                                    
-                                    <th>Name</th>
-                                    <th>Room Type</th>
-                                    <th>Bed</th>
-                                    <th>Feature</th>
-                                    <th>Created At</th>
-                                    <th>Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($rooms as $index => $room)
-                                    <tr>
-                                        <td>
-                                            <div class="form-check style-1">
-                                                <input class="form-check-input" type="checkbox" value="">
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div>
-                                                <span class="fs-16">{{ ++$index }}</span>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="guest-bx">
-                                                <img class="me-3" src="{{ asset('storage/' . $room->image) }}" alt="">
-                                                <div>
-                                                    <h4 class="mb-0 mt-1"><a class="text-black"
-                                                            href="guest-detail.html">{{ $room->name }}</a></h4>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div>
-                                                <span class="fs-16">{{ $room->room_type }}</span>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div>
-                                                <span class="fs-16">{{ $room->bed_type }}</span>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div>
-                                                <span class="fs-16">{{ $room->feature }}</span>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div>
-                                                <span class="fs-16">{{ $room->created_at }}</span>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="dropdown dropstart">
-                                                <a href="javascript:void(0);" class="btn-link"
-                                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                                    <svg width="24" height="24" viewBox="0 0 24 24"
-                                                        fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <path
-                                                            d="M11 12C11 12.5523 11.4477 13 12 13C12.5523 13 13 12.5523 13 12C13 11.4477 12.5523 11 12 11C11.4477 11 11 11.4477 11 12Z"
-                                                            stroke="#262626" stroke-width="2" stroke-linecap="round"
-                                                            stroke-linejoin="round" />
-                                                        <path
-                                                            d="M18 12C18 12.5523 18.4477 13 19 13C19.5523 13 20 12.5523 20 12C20 11.4477 19.5523 11 19 11C18.4477 11 18 11.4477 18 12Z"
-                                                            stroke="#262626" stroke-width="2" stroke-linecap="round"
-                                                            stroke-linejoin="round" />
-                                                        <path
-                                                            d="M4 12C4 12.5523 4.44772 13 5 13C5.55228 13 6 12.5523 6 12C6 11.4477 5.55228 11 5 11C4.44772 11 4 11.4477 4 12Z"
-                                                            stroke="#262626" stroke-width="2" stroke-linecap="round"
-                                                            stroke-linejoin="round" />
-                                                    </svg>
-                                                </a>
-                                                <div class="dropdown-menu">
-                                                    <a class="dropdown-item"
-                                                        onclick="editRoom({{ $room->id }},'{{ $room->name }}','{{ $room->bed_type }}','{{ $room->room_type }}','{{ $room->feature }}')"
-                                                        data-bs-toggle="modal"
-                                                        data-bs-target="#editRoomModal">Edit</a>
-                                                    <a class="dropdown-item"
-                                                        onclick="deleteroom({{ $room->id }})">Delete</a>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+
+                                        <div class="small text-muted mb-3">
+                                            {{ $room->feature }}
+                                        </div>
+
+                                        <div class="d-flex justify-content-between">
+
+                                            <button class="btn btn-primary btn-sm"
+                                                onclick="editRoom({{ $room->id }},'{{ $room->name }}','{{ $room->bed_type }}','{{ $room->room_type }}','{{ $room->feature }}')"
+                                                data-bs-toggle="modal" data-bs-target="#editRoomModal">
+                                                <i class="fa fa-edit"> Edit</i>
+                                            </button>
+
+                                            <button class="btn btn-danger btn-sm"
+                                                onclick="deleteroom({{ $room->id }})">
+                                                <i class="fa fa-trash"> Delete</i>
+                                            </button>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
