@@ -26,9 +26,15 @@
                                     class="flaticon-381-search-2"></i></a></span>
                     </div>
                 </div>
-                <a href="javascript:void(0);" class="btn btn-primary mb-xxl-0 mb-4 radius-btn" data-bs-toggle="modal"
-                    data-bs-target="#exampleModal"><i class="far fa-file-word me-2"></i>Add
-                    Floors</a>
+                <div>
+
+                    <a href="javascript:void(0);" class="btn btn-primary mb-xxl-0 mb-4 radius-btn"
+                        data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="far fa-file-word me-2"></i>Add
+                        Floors</a>
+                    <a href="javascript:void(0);" class="btn btn-primary mb-xxl-0 mb-4 radius-btn"
+                        data-bs-toggle="modal" data-bs-target="#roomModal"><i class="far fa-file-word me-2"></i>Add
+                        Rooms</a>
+                </div>
             </div>
             <div class="tab-content">
                 <div class="tab-pane active show" id="floors">
@@ -122,7 +128,11 @@
                                         </div>
                                     </th>
                                     <th>Sno</th>
+                                    
                                     <th>Name</th>
+                                    <th>Room Type</th>
+                                    <th>Bed</th>
+                                    <th>Feature</th>
                                     <th>Created At</th>
                                     <th>Actions</th>
                                 </tr>
@@ -141,8 +151,27 @@
                                             </div>
                                         </td>
                                         <td>
+                                            <div class="guest-bx">
+                                                <img class="me-3" src="{{ asset('storage/' . $room->image) }}" alt="">
+                                                <div>
+                                                    <h4 class="mb-0 mt-1"><a class="text-black"
+                                                            href="guest-detail.html">{{ $room->name }}</a></h4>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
                                             <div>
-                                                <span class="fs-16">{{ $room->name }}</span>
+                                                <span class="fs-16">{{ $room->room_type }}</span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div>
+                                                <span class="fs-16">{{ $room->bed_type }}</span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div>
+                                                <span class="fs-16">{{ $room->feature }}</span>
                                             </div>
                                         </td>
                                         <td>
@@ -152,8 +181,8 @@
                                         </td>
                                         <td>
                                             <div class="dropdown dropstart">
-                                                <a href="javascript:void(0);" class="btn-link" data-bs-toggle="dropdown"
-                                                    aria-expanded="false">
+                                                <a href="javascript:void(0);" class="btn-link"
+                                                    data-bs-toggle="dropdown" aria-expanded="false">
                                                     <svg width="24" height="24" viewBox="0 0 24 24"
                                                         fill="none" xmlns="http://www.w3.org/2000/svg">
                                                         <path
@@ -172,9 +201,11 @@
                                                 </a>
                                                 <div class="dropdown-menu">
                                                     <a class="dropdown-item"
-                                                        onclick="editRoom({{ $room->id }},'{{ $room->name }}')">Edit</a>
+                                                        onclick="editRoom({{ $room->id }},'{{ $room->name }}','{{ $room->bed_type }}','{{ $room->room_type }}','{{ $room->feature }}')"
+                                                        data-bs-toggle="modal"
+                                                        data-bs-target="#editRoomModal">Edit</a>
                                                     <a class="dropdown-item"
-                                                        onclick="deleteRoom({{ $room->id }})">Delete</a>
+                                                        onclick="deleteroom({{ $room->id }})">Delete</a>
                                                 </div>
                                             </div>
                                         </td>
@@ -190,7 +221,7 @@
 </div>
 
 
-<!-- Modal -->
+<!-- Modal Add floor -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
@@ -221,7 +252,7 @@
     </div>
 </div>
 
-<!-- Modal -->
+<!-- Modal updated floor -->
 <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
@@ -252,6 +283,171 @@
     </div>
 </div>
 
+<!-- Modal Add room -->
+<div class="modal fade" id="roomModal" tabindex="-1" aria-labelledby="roomModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="roomModalLabel">Add Rooms</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+                <form action="{{ url('add-rooms') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="mb-3">
+                                <label for="" class="form-label">Room Name</label>
+                                <input type="text" name="name" class="form-control"
+                                    placeholder="e.g., Deluxe, Standard, Suite">
+                            </div>
+                        </div>
+
+
+
+
+                        <div class="col-xl-12">
+                            <div class="mb-3">
+                                <label for="image" class="form-label">Room Image</label>
+                                <input type="file" name="image" id="image" class="form-control"
+                                    accept="image/*">
+                            </div>
+                        </div>
+                        <div class="col-xl-12">
+                            <div class="mb-3">
+                                <label for="" class="form-label">Feature</label>
+                                <input type="text" name="feature" class="form-control"
+                                    placeholder="e.g., Freig, Sopha, Tv">
+                            </div>
+                        </div>
+                        <div class="col-xl-12">
+                            <div class="mb-3">
+                                <label for="" class="form-label">Room Type</label>
+                                <select class="form-control" name="type_of_room">
+                                    <option value="">Select Room Type</option>
+                                    <option value="AC">AC</option>
+                                    <option value="NON AC">NON AC</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-xl-12">
+                            <div class="mb-3">
+                                <label for="" class="form-label">Bed Type</label>
+                                <select class="form-control" name="type_of_bed">
+                                    <option value="">Select Bed Type</option>
+                                    <option value="Single">Single</option>
+                                    <option value="Double">Double</option>
+                                    <option value="King">King</option>
+                                    <option value="Queen">Queen</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger light" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Save changes</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Modal  update room-->
+<div class="modal fade" id="editRoomModal" tabindex="-1" aria-labelledby="editRoomModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="editRoomModalLabel">Update Room</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="{{ url('/update-room') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+
+                    <div class="modal-body">
+
+                        <input type="hidden" name="id" id="room_id">
+
+                        <!-- Room Name -->
+                        <div class="mb-3">
+                            <label class="form-label">Room Name</label>
+                            <input type="text" class="form-control" id="room_name" name="name">
+                        </div>
+
+                        <!-- Old Image -->
+                        <div class="mb-3">
+                            <label class="form-label">Current Image</label>
+                            <br>
+
+                            <img id="old_image" src="" width="180" class="img-thumbnail"
+                                style="display:none;">
+                        </div>
+
+                        <!-- New Image -->
+                        <div class="mb-3">
+                            <label class="form-label">Change Image</label>
+                            <input type="file" class="form-control" name="image" accept="image/*">
+                        </div>
+
+                        <!-- Feature -->
+                        <div class="mb-3">
+                            <label class="form-label">Feature</label>
+                            <input type="text" class="form-control" id="feature" name="feature">
+                        </div>
+
+                        <!-- Room Type -->
+                        <div class="mb-3">
+                            <label class="form-label">Room Type</label>
+
+                            <select class="form-control" id="type_of_room" name="type_of_room">
+
+                                <option value="AC">AC</option>
+                                <option value="NON AC">NON AC</option>
+
+                            </select>
+
+                        </div>
+
+                        <!-- Bed Type -->
+                        <div class="mb-3">
+                            <label class="form-label">Bed Type</label>
+
+                            <select class="form-control" id="type_of_bed" name="type_of_bed">
+
+                                <option value="Single">Single</option>
+                                <option value="Double">Double</option>
+                                <option value="King">King</option>
+                                <option value="Queen">Queen</option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+                    <div class="modal-footer">
+
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                            Close
+                        </button>
+
+                        <button type="submit" class="btn btn-primary">
+                            Update Room
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
 @include('layout.footer');
 <script>
     function editFloor(id, name) {
@@ -262,6 +458,24 @@
     function deleteFloor(id) {
         if (confirm("Are you sure you want to delete this floor?")) {
             window.location.href = '/delete-floor/' + id;
+        }
+    }
+
+
+
+
+    function editRoom(id, name, type_of_bed, type_of_room, feature) {
+        $('#room_id').val(id);
+        $('#room_name').val(name);
+        $('#type_of_bed').val(type_of_bed);
+        $('#type_of_room').val(type_of_room);
+        $('#feature').val(feature);
+    }
+
+
+    function deleteroom(id) {
+        if (confirm("Are you sure you want to delete this room?")) {
+            window.location.href = '/delete-room/' + id;
         }
     }
 </script>
