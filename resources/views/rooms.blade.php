@@ -119,8 +119,8 @@
                         </div>
                         <div class="col-xl-12">
                             <div class="mb-3">
-                                <label for="" class="form-label">Room No</label>
-                                <input type="text" name="room_no" class="form-control">
+                                <label for="" class="form-label">Room No * (Comma Sprated also)</label>
+                                <input type="text" name="room_no" placeholder="101,102,........." class="form-control" required>
                             </div>
                         </div>
                     </div>
