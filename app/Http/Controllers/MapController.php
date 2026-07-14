@@ -15,7 +15,7 @@ class MapController extends Controller
         // $floors = Floor::all();
         $floors = Floor::with(['floorMaps.room'])->get();
         $rooms = Room::all();
-        $floorMaps = FloorMap::with('room', 'floor')->get();
+        $floorMaps = FloorMap::with('room', 'floor')->orderBy('room_no', 'asc')->get();
         return view('rooms', ['floors' => $floors, 'rooms' => $rooms, "floorMaps" => $floorMaps]);
     }
 
