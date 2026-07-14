@@ -1,7 +1,7 @@
 @include('layout.header');
 
 
-
+{{-- Add floor --}}
 <!-- row -->
 <div class="container-fluid">
     <div class="row">
@@ -36,6 +36,8 @@
                         Rooms</a>
                 </div>
             </div>
+
+            {{-- show floor --}}
             <div class="tab-content">
                 <div class="tab-pane active show" id="floors">
                     <div class="table-responsive">
@@ -114,6 +116,11 @@
                     </div>
                 </div>
             </div>
+            {{-- end show floor --}}
+
+
+
+            {{-- Show room --}}
             <div class="tab-content">
                 <div class="tab-pane" id="rooms">
                     <div class="table-responsive">
@@ -216,6 +223,7 @@
                     </div>
                 </div>
             </div>
+            {{-- end show room --}}
         </div>
     </div>
 </div>

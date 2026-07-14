@@ -2,7 +2,7 @@
 
 		
 
-            <!-- row -->
+            <!--main body start-->
 			<div class="container-fluid">
 				<div class="row">
 					<div class="col-xl-3 col-sm-6">
@@ -61,6 +61,7 @@
 						</div>
 					</div>
 				</div>
+				
 				<div class="row">
 					<div class="col-xl-3 col-xxl-4">
 						<div class="row">
@@ -233,6 +234,8 @@
 							</div>
 						</div>
 					</div>
+
+					
 					<div class="col-xl-6">
 						<div class="row">
 							<div class="col-xl-12">
@@ -382,10 +385,10 @@
 					</div>
 				</div>
             </div>
+
+			{{-- end main body --}}
        
-        <!--**********************************
-            Content body end
-        ***********************************-->
+      
 		
 
 @include('layout.footer');

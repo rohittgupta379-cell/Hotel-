@@ -15,6 +15,7 @@ class FloorMap extends Model
         'floor_id',
         'room_id',
         'room_no',
+        'is_available',
     ];
 
     public function floor()

@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FloorController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MapController;
+use App\Http\Controllers\BookingController;
 
 
 Route::get('/', [HomeController::class, 'home']);
@@ -23,3 +24,10 @@ Route::get('/delete-room/{id}', [FloorController::class, 'deleteroom']);
 Route::get('/rooms', [MapController::class, 'view']);
 Route::post('/add-map', [MapController::class, 'addMap']);
 Route::get('/delete-room-map/{id}', [MapController::class, 'deleteMap']);
+
+
+// checkin process
+Route::post('/check-in', [BookingController::class, 'checkIn']);
+Route::get('/check-out/{id}', [BookingController::class, 'checkOut']);
+Route::post('/add-guests', [BookingController::class, 'addGuests']);
+
