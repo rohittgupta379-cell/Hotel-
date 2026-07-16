@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 
 class FoodCategoryController extends Controller
 {
+    // food category show
     public function index(Request $request)
     {
         $foods = FoodCategory::query();
@@ -21,6 +22,7 @@ class FoodCategoryController extends Controller
         return view('food-category', compact('foods'));
     }
 
+    // Add Food Cateroty
     public function addFood(Request $request)
     {
         $request->validate([
@@ -34,15 +36,16 @@ class FoodCategoryController extends Controller
         return redirect()->back()->with('success', 'Food Added Successfully');
     }
 
-    // food deleted
-    public function deleteFood($id)
-    {
-        FoodCategory::findOrFail($id)->delete();
+    // food deleted Cateroty
+   public function deleteFood($id)
+   {
+       FoodCategory::findOrFail($id)->delete();
 
-        return redirect()->back()->with('success', 'Food Deleted Successfully');
-    }
+       return redirect()->back()->with('success', 'Food Category Deleted Successfully');
+   }
 
-    public function updateFood(Request $request, $id)
+     // food update Cateroty
+    public function updateFoodcategory(Request $request, $id)
     {
         $request->validate([
             'name' => 'required',
@@ -56,46 +59,50 @@ class FoodCategoryController extends Controller
         return redirect()->back()->with('success', 'Food Updated Successfully');
     }
 
-    // food
-    // public function foods()
-    // {
-    //     $foods = Food::with('foodCategory')->latest()->get();
-    //     $categories = FoodCategory::all();
+    // show food
+   public function foods(Request $request)
+   {
+       $foods = Food::with('foodCategory');
 
-    //     return view('foods', compact('foods', 'categories'));
-    // }
+       // Search
+       if ($request->filled('search')) {
+           $search = $request->search;
 
-    public function foods(Request $request)
-    {
-        $foods = Food::with('foodCategory');
+           $foods->where(function ($query) use ($search) {
+               $query->where('name', 'LIKE', "%{$search}%")
+                     ->orWhere('description', 'LIKE', "%{$search}%")
+                     ->orWhere('price', 'LIKE', "%{$search}%")
+                     ->orWhereHas('foodCategory', function ($q) use ($search) {
+                         $q->where('name', 'LIKE', "%{$search}%");
+                     });
+           });
+       }
 
-        if ($request->filled('search')) {
-            $search = $request->search;
+       // Category Filter (Breakfast, Lunch, Dinner)
+       if ($request->filled('category')) {
+           $category = $request->category;
 
-            $foods->where(function ($query) use ($search) {
-                $query->where('name', 'LIKE', "%{$search}%")
-                      ->orWhere('description', 'LIKE', "%{$search}%")
-                      ->orWhere('price', 'LIKE', "%{$search}%")
-                      ->orWhereHas('foodCategory', function ($q) use ($search) {
-                          $q->where('name', 'LIKE', "%{$search}%");
-                      });
-            });
-        }
+           $foods->whereHas('foodCategory', function ($q) use ($category) {
+               $q->where('name', $category);
+           });
+       }
 
-        $foods = $foods->latest()->get();
-        $categories = FoodCategory::all();
+       $foods = $foods->latest()->get();
+       $categories = FoodCategory::all();
 
-        return view('foods', compact('foods', 'categories'));
-    }
+       return view('foods', compact('foods', 'categories'));
+   }
 
+
+    // Add food
     public function add_Food(Request $request)
     {
         $request->validate([
-            'category_id' => 'required',
-            'name' => 'required',
+            'category_id' => 'required|exists:food_categories,id',
+            'name' => 'required|string|max:255',
             'description' => 'required',
             'price' => 'required|numeric',
-            'image' => 'required|image|mimes:jpg,jpeg,png,webp',
+            'image' => 'required|image|mimes:jpg,jpeg,png,webp|max:2048',
             'status' => 'required',
         ]);
 
@@ -108,8 +115,8 @@ class FoodCategoryController extends Controller
         $food->status = $request->status;
 
         if ($request->hasFile('image')) {
-            $image = $request->image;
-            $imageName = time().'.'.$image->getClientOriginalExtension();
+            $image = $request->file('image');
+            $imageName = time().'_'.$image->getClientOriginalName();
             $image->move(public_path('food_images'), $imageName);
 
             $food->image = $imageName;
@@ -120,15 +127,16 @@ class FoodCategoryController extends Controller
         return back()->with('success', 'Food Added Successfully');
     }
 
-    // edit food
 
+    // update food
     public function update_Food(Request $request, $id)
     {
         $request->validate([
-            'category_id' => 'required',
-            'name' => 'required',
+            'category_id' => 'required|exists:food_categories,id',
+            'name' => 'required|string|max:255',
             'description' => 'required',
             'price' => 'required|numeric',
+            'image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
             'status' => 'required',
         ]);
 
@@ -141,13 +149,12 @@ class FoodCategoryController extends Controller
         $food->status = $request->status;
 
         if ($request->hasFile('image')) {
-            // Delete old image
             if ($food->image && file_exists(public_path('food_images/'.$food->image))) {
                 unlink(public_path('food_images/'.$food->image));
             }
 
             $image = $request->file('image');
-            $imageName = time().'.'.$image->getClientOriginalExtension();
+            $imageName = time().'_'.$image->getClientOriginalName();
             $image->move(public_path('food_images'), $imageName);
 
             $food->image = $imageName;
@@ -155,14 +162,21 @@ class FoodCategoryController extends Controller
 
         $food->save();
 
-        return redirect()->back()->with('success', 'Food Updated Successfully');
+        return back()->with('success', 'Food Updated Successfully');
     }
 
-    // delete food
-      public function delete_Food($id)
-      {
-          Food::findOrFail($id)->delete();
 
-          return redirect()->back()->with('success', 'Food Deleted Successfully');
-      }
+    // delete food
+    public function delete_Food($id)
+    {
+        $food = Food::findOrFail($id);
+
+        if ($food->image && file_exists(public_path('food_images/'.$food->image))) {
+            unlink(public_path('food_images/'.$food->image));
+        }
+
+        $food->delete();
+
+        return back()->with('success', 'Food Deleted Successfully');
+    }
 }

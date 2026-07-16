@@ -100,9 +100,9 @@
                                                 <i class="fa fa-edit"></i>
                                             </button>
                                             <!-- Delete Button -->
-                                            <a href="{{ url('/delete-food/' . $food->id) }}"
-                                                class="btn btn-sm btn-danger"
-                                                onclick="return confirm('Are you sure you want to delete this food?')">
+                                            <a href="{{ url('/delete-food-category/' . $food->id) }}"
+                                                class="btn btn-danger btn-sm"
+                                                onclick="return confirm('Delete this category?')">
                                                 <i class="fa fa-trash"></i>
                                             </a>
                                         </td>
@@ -135,7 +135,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
 
-            <form action="{{ url('/add-food') }}" method="POST">
+            <form action="{{ url('/add-food-category') }}" method="POST">
                 @csrf
 
                 <div class="modal-body">
@@ -207,7 +207,7 @@
                 let name = this.dataset.name;
 
                 document.getElementById("editFoodName").value = name;
-                document.getElementById("editFoodForm").action = "/update-food/" + id;
+                document.getElementById("editFoodForm").action = "/update-food-category/" + id;
 
             });
 

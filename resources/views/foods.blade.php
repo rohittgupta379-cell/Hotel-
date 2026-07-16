@@ -5,21 +5,68 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-xl-12">
+            <div class="d-flex justify-content-between align-items-center flex-wrap mb-4">
 
+                <!-- Food Tabs -->
+                {{-- <div class="card-tabs">
+                    <ul class="nav nav-tabs" role="tablist">
 
+                        <li class="nav-item">
+                            <a class="nav-link active" data-bs-toggle="tab" href="#breakfast" role="tab">
+                                🍳 Breakfast
+                            </a>
+                        </li>
 
-          
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="tab" href="#lunch" role="tab">
+                                🍛 Lunch
+                            </a>
+                        </li>
 
-            <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 mb-4">
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="tab" href="#dinner" role="tab">
+                                🍽️ Dinner
+                            </a>
+                        </li>
 
-                <div>
-                    <h3 class="fw-bold mb-1">
-                        <i class="fa fa-utensils text-primary me-2"></i>Food Menu
-                    </h3>
-                    <small class="text-muted">
-                        Total Foods: {{ $foods->count() }}
-                    </small>
+                    </ul>
+                </div> --}}
+
+                <div class="card-tabs">
+                    <ul class="nav nav-tabs">
+
+                        <li class="nav-item">
+                            <a class="nav-link {{ request('category') == '' ? 'active' : '' }}"
+                                href="{{ url('/foods') }}">
+                                🍽️ All
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link {{ request('category') == 'Breakfast' ? 'active' : '' }}"
+                                href="{{ url('/foods?category=Breakfast') }}">
+                                🍳 Breakfast
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link {{ request('category') == 'Lunch' ? 'active' : '' }}"
+                                href="{{ url('/foods?category=Lunch') }}">
+                                🍛 Lunch
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link {{ request('category') == 'Dinner' ? 'active' : '' }}"
+                                href="{{ url('/foods?category=Dinner') }}">
+                                🍽️ Dinner
+                            </a>
+                        </li>
+
+                    </ul>
                 </div>
+
+
 
                 <div class="d-flex gap-2">
 
@@ -40,10 +87,17 @@
                         </div>
                     </form>
 
-                    <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addFoodModal">
-                        <i class="fa fa-plus me-2"></i>Add Food
-                    </button>
 
+
+                </div>
+
+                <!-- Add Food -->
+                <div>
+                    <button class="btn btn-success radius-btn" data-bs-toggle="modal" data-bs-target="#addFoodModal">
+
+                        <i class="fa fa-plus me-2"></i>Add Food
+
+                    </button>
                 </div>
 
             </div>
@@ -104,25 +158,30 @@
                                         <td>{{ $food->created_at->format('d M Y') }}</td>
 
                                         <td>
-                                            <!-- Edit Button -->
-                                            <button type="button" class="btn btn-warning btn-sm editFoodBtn"
-                                                data-bs-toggle="modal" data-bs-target="#editFoodModal"
-                                                data-id="{{ $food->id }}"
-                                                data-category_id="{{ $food->category_id }}"
-                                                data-name="{{ $food->name }}"
-                                                data-description="{{ $food->description }}"
-                                                data-price="{{ $food->price }}" data-status="{{ $food->status }}"
-                                                data-image="{{ asset('food_images/' . $food->image) }}">
+                                            <div class="d-flex justify-content-center align-items-center gap-2">
 
-                                                <i class="fa fa-edit"></i>
-                                            </button>
+                                                <!-- Edit Button -->
+                                                <button type="button" class="btn btn-warning btn-sm editFoodBtn"
+                                                    data-bs-toggle="modal" data-bs-target="#editFoodModal"
+                                                    data-id="{{ $food->id }}"
+                                                    data-category_id="{{ $food->category_id }}"
+                                                    data-name="{{ $food->name }}"
+                                                    data-description="{{ $food->description }}"
+                                                    data-price="{{ $food->price }}" data-status="{{ $food->status }}"
+                                                    data-image="{{ asset('food_images/' . $food->image) }}">
 
-                                            <a href="{{ url('/delete-food/' . $food->id) }}"
-                                                class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')">
-                                                <i class="fa fa-trash"></i>
-                                            </a>
+                                                    <i class="fa fa-edit"></i>
+                                                </button>
 
+                                                <!-- Delete Button -->
+                                                <a href="{{ url('/delete-food/' . $food->id) }}"
+                                                    class="btn btn-danger btn-sm"
+                                                    onclick="return confirm('Are you sure?')">
 
+                                                    <i class="fa fa-trash"></i>
+                                                </a>
+
+                                            </div>
                                         </td>
                                     </tr>
                                 @empty
@@ -190,7 +249,8 @@
                     <!-- Price -->
                     <div class="mb-3">
                         <label class="form-label">Price (₹)</label>
-                        <input type="number" name="price" class="form-control" placeholder="Enter Price" required>
+                        <input type="number" name="price" class="form-control" placeholder="Enter Price"
+                            required>
                     </div>
 
                     <!-- Image -->
@@ -310,6 +370,8 @@
 
 
 <script>
+
+    // update food catory
     document.addEventListener("DOMContentLoaded", function() {
 
         document.querySelectorAll(".editFoodBtn").forEach(function(button) {
@@ -330,20 +392,14 @@
 
 
 
-
-
-
-
-
-
-
-    $(document).ready(function() {
+    // edit food
+      $(document).ready(function() {
 
         $('.editFoodBtn').click(function() {
 
             let id = $(this).data('id');
 
-            $('#editFoodForm').attr('action', '/update-food/' + id);
+            $('#editFoodForm').attr('action', '/edit-food/' + id);
 
             $('#edit_category').val($(this).data('category_id'));
             $('#edit_name').val($(this).data('name'));
@@ -356,4 +412,6 @@
         });
 
     });
+
+  
 </script>
