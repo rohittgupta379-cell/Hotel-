@@ -39,6 +39,15 @@ class BookingController extends Controller
         return back()->with('success', 'Booking is created.');
     }
 
+    public function guestHistory()
+{
+    $bookings = Booking::with(['room', 'guests'])
+        ->latest()
+        ->paginate(10);
+
+    return view('guest_history', compact('bookings'));
+}
+
     public function checkOut($id)
     {
         $booking = Booking::whereNull('check_out')->where('floor_map_id', $id)->first();

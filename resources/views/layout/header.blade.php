@@ -1000,7 +1000,7 @@
                         <ul aria-expanded="false">
                             <li><a href="{{ url('floors') }}">Floors</a></li>
                             <li><a href="{{ url('rooms') }}">Room Map</a></li>
-                    
+
                         </ul>
                     </li>
                     {{-- room management end --}}
@@ -1013,9 +1013,9 @@
                             <span class="nav-text">Booking History</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href="">Guest History</a></li>
+                            <li><a href="{{ url('guest-history') }}">Guest History</a></li>
                             <li><a href="chart-morris.html">Room History</a></li>
-                           
+
                         </ul>
                     </li>
                     {{-- Booking end history --}}
@@ -1023,25 +1023,13 @@
 
                     <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
                             <i class="flaticon-086-star"></i>
-                            <span class="nav-text">Bootstrap</span>
+                            <span class="nav-text">Food Managment</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href="ui-accordion.html">Accordion</a></li>
-                            <li><a href="ui-alert.html">Alert</a></li>
-                            <li><a href="ui-badge.html">Badge</a></li>
-                            <li><a href="ui-button.html">Button</a></li>
-                            <li><a href="ui-modal.html">Modal</a></li>
-                            <li><a href="ui-button-group.html">Button Group</a></li>
-                            <li><a href="ui-list-group.html">List Group</a></li>
-                            <li><a href="ui-card.html">Cards</a></li>
-                            <li><a href="ui-carousel.html">Carousel</a></li>
-                            <li><a href="ui-dropdown.html">Dropdown</a></li>
-                            <li><a href="ui-popover.html">Popover</a></li>
-                            <li><a href="ui-progressbar.html">Progressbar</a></li>
-                            <li><a href="ui-tab.html">Tab</a></li>
-                            <li><a href="ui-typography.html">Typography</a></li>
-                            <li><a href="ui-pagination.html">Pagination</a></li>
-                            <li><a href="ui-grid.html">Grid</a></li>
+                            <li>
+                                <a href="{{ route('food.category') }}">Food Category</a>
+                            </li>
+                            <li><a href="{{ url('foods') }}">Foods</a></li>
 
                         </ul>
                     </li>

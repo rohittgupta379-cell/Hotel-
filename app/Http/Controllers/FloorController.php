@@ -13,6 +13,7 @@ class FloorController extends Controller
     {
         $floors = Floor::all();
         $rooms = Room::all();
+        
 
         return view('floor', ['floors' => $floors, 'rooms' => $rooms]);
     }

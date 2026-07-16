@@ -1,15 +1,13 @@
 <?php
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BookingController;
 use App\Http\Controllers\FloorController;
+use App\Http\Controllers\FoodCategoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MapController;
-use App\Http\Controllers\BookingController;
-
+use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'home']);
-
 
 // floor manage
 Route::get('/floors', [FloorController::class, 'viewFloors']);
@@ -25,9 +23,23 @@ Route::get('/rooms', [MapController::class, 'view']);
 Route::post('/add-map', [MapController::class, 'addMap']);
 Route::get('/delete-room-map/{id}', [MapController::class, 'deleteMap']);
 
-
 // checkin process
 Route::post('/check-in', [BookingController::class, 'checkIn']);
 Route::get('/check-out/{id}', [BookingController::class, 'checkOut']);
 Route::post('/add-guests', [BookingController::class, 'addGuests']);
 
+// guest history
+Route::get('/guest-history', [BookingController::class, 'guestHistory'])
+    ->name('guest.history');
+
+// Add menu
+Route::get('/food-category', [FoodCategoryController::class, 'index'])->name('food.category');
+Route::post('/add-food', [FoodCategoryController::class, 'addFood']);
+Route::get('/delete-food/{id}', [FoodCategoryController::class, 'deleteFood']);
+Route::post('/update-food/{id}', [FoodCategoryController::class, 'updateFood']);
+
+// food
+Route::get('/foods', [FoodCategoryController::class, 'foods']);
+Route::post('/add-food', [FoodCategoryController::class, 'add_Food']);
+Route::post('/update-food/{id}', [FoodCategoryController::class, 'update_Food']);
+Route::get('/delete-food/{id}', [FoodCategoryController::class, 'delete_Food']);
