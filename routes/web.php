@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\FloorController;
 use App\Http\Controllers\FoodCategoryController;
@@ -7,7 +8,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MapController;
 use App\Http\Controllers\FoodOrderController;
 use App\Http\Controllers\ComplaintController;
-use Illuminate\Support\Facades\Route;
+use App\Models\FoodCategory;
 
 Route::get('/', [HomeController::class, 'home']);
 
@@ -61,3 +62,9 @@ Route::get('/complaints', [ComplaintController::class, 'complaints']);
 Route::post('/complaints-store',[ComplaintController::class, 'complaintstore']);
 Route::post('/complaints/update-status/{id}',[ComplaintController::class, 'updateStatus']);
 Route::delete('/complaints/delete/{id}',[ComplaintController::class, 'destroy'])->name('complaints.delete');
+
+
+Route::get('/food-menu',function(){
+    $categories = FoodCategory::with('foods')->get();
+    return view('food-menu', compact('categories'));
+});
