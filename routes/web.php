@@ -11,6 +11,7 @@ use App\Http\Controllers\MapController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Models\FoodCategory;
 
@@ -106,16 +107,18 @@ Route::delete('/expenses/delete/{id}', [PaymentController::class, 'destroy'])
 
 
      //  role
-
  Route::get('/role', [RoleController::class, 'roles']);
-
-
 Route::post('/roles/store', [RoleController::class, 'store'])->name('roles.store');
-
 Route::put('/roles/update/{id}', [RoleController::class, 'update'])->name('roles.update');
-
 Route::delete('/roles/delete/{id}', [RoleController::class, 'destroy'])->name('roles.destroy');
     
+
+
+// users
+Route::get('/users', [UserController::class, 'users']);
+Route::post('/users', [UserController::class, 'store'])->name('users.store');
+Route::post('/update-user', [UserController::class, 'update'])->name('users.update');
+
 
 });
 

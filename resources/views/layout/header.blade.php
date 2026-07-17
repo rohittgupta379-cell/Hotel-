@@ -974,14 +974,28 @@
                     </li>
 
 
-                    {{-- role --}}
                     <li>
-                        <a href="{{ url('role') }}" class="ai-icon" aria-expanded="false">
-                            <i class="flaticon-013-checkmark"></i>
-                            <span class="nav-text">Role</span>
+                        <a class="has-arrow ai-icon" href="javascript:void(0)" aria-expanded="false">
+                            <i class="flaticon-041-graph"></i>
+                            <span class="nav-text">User Management</span>
                         </a>
-                    </li>
 
+                        <ul aria-expanded="false">
+
+                            <li>
+                                <a href="{{ url('role') }}">
+                                    <i class="fa fa-user-tag"></i> Role
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="{{ url('users') }}">
+                                    <i class="fa fa-users"></i> Users
+                                </a>
+                            </li>
+
+                        </ul>
+                    </li>
 
                 </ul>
                 <div class="copyright">

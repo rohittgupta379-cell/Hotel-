@@ -54,7 +54,7 @@
 
 
 <!-- Table -->
-<div class="card shadow">   
+<div class="card shadow">
 
     <div class="card-header">
         <h5 class="mb-0">Role List</h5>
@@ -90,7 +90,7 @@
 
                             <button class="btn btn-warning btn-sm" data-bs-toggle="modal"
                                 data-bs-target="#editRoleModal{{ $role->id }}">
-                                <i class="fa fa-edit"></i> 
+                                <i class="fa fa-edit"></i>
                             </button>
 
                             <form action="{{ route('roles.destroy', $role->id) }}" method="POST" class="d-inline">
@@ -98,9 +98,10 @@
                                 @csrf
                                 @method('DELETE')
 
-                                <button class="btn btn-danger btn-sm" onclick="return confirm('Delete Role?')"> <i class="fa fa-trash"></i>
+                                <button class="btn btn-danger btn-sm" onclick="return confirm('Delete Role?')"> <i
+                                        class="fa fa-trash"></i>
 
-                                    
+
 
                                 </button>
 
@@ -212,7 +213,10 @@
 
                 <div class="modal-header bg-primary text-white">
 
-                    <h5>Add Role</h5>
+                    <h5>
+                        <i class="fa fa-plus-circle text-success"></i>
+                        Add Role
+                    </h5>
 
                     <button class="btn-close" data-bs-dismiss="modal"></button>
 
