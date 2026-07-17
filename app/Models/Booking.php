@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\FloorMap;
 
 class Booking extends Model
 {
@@ -22,6 +23,11 @@ class Booking extends Model
     ];
 
     public function room()
+    {
+        return $this->belongsTo(FloorMap::class, 'floor_map_id');
+    }
+
+    public function floorMap()
     {
         return $this->belongsTo(FloorMap::class, 'floor_map_id');
     }

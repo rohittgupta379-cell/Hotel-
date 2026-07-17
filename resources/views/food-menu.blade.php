@@ -262,7 +262,7 @@
             <h2 class="modal-title" id="modalFoodName">Order Item</h2>
             <p class="modal-subtitle">Please enter your details below.</p>
 
-            <form id="orderForm" class="order-form">
+            <form action="/food-order" method="POST" class="order-form">
                 @csrf
                 <input type="hidden" name="food_id" id="food_id">
 
@@ -302,6 +302,132 @@
         </div>
     </div>
 
+    <style>
+        .popup-modal {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 360px;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, .25);
+            z-index: 99999;
+            overflow: hidden;
+            animation: slideIn .4s;
+        }
+
+        .popup-header {
+            padding: 14px 18px;
+            color: #fff;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .success {
+            background: #198754;
+        }
+
+        .error {
+            background: #dc3545;
+        }
+
+        .popup-body {
+            padding: 18px;
+            font-size: 15px;
+        }
+
+        .popup-body ul {
+            margin: 10px 0 0;
+            padding-left: 20px;
+        }
+
+        .popup-close {
+            float: right;
+            cursor: pointer;
+            font-size: 22px;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+    </style>
+
+    @if (session('success'))
+        <div id="successModal" class="popup-modal">
+
+            <div class="popup-header success">
+
+                Success
+
+                <span class="popup-close" onclick="closePopup('successModal')">&times;</span>
+
+            </div>
+
+            <div class="popup-body">
+
+                ✅ {{ session('success') }}
+
+            </div>
+
+        </div>
+    @endif
+
+    @if (session('error'))
+        <div id="errorModal" class="popup-modal">
+
+            <div class="popup-header error">
+
+                Error
+
+                <span class="popup-close" onclick="closePopup('errorModal')">&times;</span>
+
+            </div>
+
+            <div class="popup-body">
+
+                ❌ {{ session('error') }}
+
+            </div>
+
+        </div>
+    @endif
+
+    @if ($errors->any())
+
+        <div id="validationModal" class="popup-modal">
+
+            <div class="popup-header error">
+
+                Validation Error
+
+                <span class="popup-close" onclick="closePopup('validationModal')">&times;</span>
+
+            </div>
+
+            <div class="popup-body">
+
+                <ul>
+
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    @endif
+
 </body>
 <script>
     function openModal(id, name) {
@@ -309,7 +435,7 @@
         document.getElementById('modalFoodName').innerText = name;
         document.getElementById('orderModal').style.display = 'flex';
     }
-    
+
     function closeModal() {
         document.getElementById('orderModal').style.display = 'none';
     }
@@ -318,6 +444,26 @@
     window.onclick = function(event) {
         if (event.target == document.getElementById('orderModal')) closeModal();
     }
+</script>
+<script>
+
+function closePopup(id){
+    document.getElementById(id).style.display="none";
+}
+
+setTimeout(function(){
+
+    if(document.getElementById('successModal'))
+        closePopup('successModal');
+
+    if(document.getElementById('errorModal'))
+        closePopup('errorModal');
+
+    if(document.getElementById('validationModal'))
+        closePopup('validationModal');
+
+},5000);
+
 </script>
 
 </html>

@@ -950,15 +950,20 @@
 
                         </ul>
                     </li>
-                    
+
                     <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
                             <i class="flaticon-086-star"></i>
                             <span class="nav-text">Bill Managment</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href="#">Hotel Bills</a></li>
-                            <li><a href="#">Food Bills</a></li>
-                            <li><a href="#">Expense</a></li>
+                            <li><a href="{{ url('room-payment') }}">Hotel Bills</a></li>
+                            <li>
+                                <a href="{{ route('food.bills') }}">
+                                    <i class="fa fa-cutlery"></i>
+                                    <span>Food Bills</span>
+                                </a>
+                            </li>
+                            <li><a href="{{ url('expense') }}">Expense</a></li>
                         </ul>
                     </li>
 
@@ -968,11 +973,33 @@
                         </a>
                     </li>
 
-                    
+
+                    <li>
+                        <a class="has-arrow ai-icon" href="javascript:void(0)" aria-expanded="false">
+                            <i class="flaticon-041-graph"></i>
+                            <span class="nav-text">User Management</span>
+                        </a>
+
+                        <ul aria-expanded="false">
+
+                            <li>
+                                <a href="{{ url('role') }}">
+                                    <i class="fa fa-user-tag"></i> Role
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="{{ url('users') }}">
+                                    <i class="fa fa-users"></i> Users
+                                </a>
+                            </li>
+
+                        </ul>
+                    </li>
 
                 </ul>
                 <div class="copyright">
-                    <p><strong>Innap Hotel Admin</strong> © {{date('Y')}} All Rights Reserved</p>
+                    <p><strong>Innap Hotel Admin</strong> © {{ date('Y') }} All Rights Reserved</p>
                     <p class="fs-12">Made with <span class="heart"></span> by DexignZone</p>
                 </div>
             </div>
