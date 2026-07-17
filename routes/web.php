@@ -1,12 +1,14 @@
 <?php
 
 use App\Http\Controllers\BookingController;
+use App\Http\Controllers\ComplaintController;
 use App\Http\Controllers\FloorController;
+use App\Http\Controllers\FoodBillController;
 use App\Http\Controllers\FoodCategoryController;
+use App\Http\Controllers\FoodOrderController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MapController;
-use App\Http\Controllers\FoodOrderController;
-use App\Http\Controllers\ComplaintController;
+use App\Http\Controllers\PaymentController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'home']);
@@ -47,17 +49,36 @@ Route::post('/add-food', [FoodCategoryController::class, 'add_Food']);
 Route::post('/edit-food/{id}', [FoodCategoryController::class, 'update_Food']);
 Route::get('/delete-food/{id}', [FoodCategoryController::class, 'delete_Food']);
 
-
 // food order
 Route::get('/food-order', [FoodOrderController::class, 'foodorder']);
 Route::post('/food-order/update-status/{id}', [FoodOrderController::class, 'updateStatus'])
     ->name('food.update.status');
 
-
-
-    // complain
+// complain
 Route::get('/complaints', [ComplaintController::class, 'complaints']);
+Route::post('/complaints-store', [ComplaintController::class, 'complaintstore']);
+Route::post('/complaints/update-status/{id}', [ComplaintController::class, 'updateStatus']);
+Route::delete('/complaints/delete/{id}', [ComplaintController::class, 'destroy'])->name('complaints.delete');
 
-Route::post('/complaints-store',[ComplaintController::class, 'complaintstore']);
-Route::post('/complaints/update-status/{id}',[ComplaintController::class, 'updateStatus']);
-Route::delete('/complaints/delete/{id}',[ComplaintController::class, 'destroy'])->name('complaints.delete');
+// Payment hotel
+Route::get('/room-payment', [PaymentController::class, 'roompayment']);
+Route::post('/payment/{id}/paid', [PaymentController::class, 'markPaid'])
+    ->name('payment.paid');
+
+// Payment food
+
+// Food Bills
+Route::get('/food-bills', [FoodBillController::class, 'index'])
+    ->name('food.bills');
+
+// Mark Payment Paid
+Route::post('/food-bills/{id}/mark-paid', [FoodBillController::class, 'markPaid'])
+    ->name('food.bill.paid');
+
+// Mark Order Delivered
+Route::post('/food-bills/{id}/mark-delivered', [FoodBillController::class, 'markDelivered'])
+    ->name('food.bill.delivered');
+
+// Delete Bill
+Route::delete('/food-bills/{id}', [FoodBillController::class, 'destroy'])
+    ->name('food.bill.delete');

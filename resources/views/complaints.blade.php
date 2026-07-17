@@ -22,9 +22,49 @@
         </div>
 
     </div>
+    @php
+        $complaintTypes = [
+            'Room Cleaning',
+            'Food Quality',
+            'Room Service',
+            'Maintenance',
+            'Staff Behaviour',
+            'Billing Issue',
+            'Noise Issue',
+            'Other',
+        ];
+    @endphp
+
 
 
     <!-- Complaint Table -->
+    <div class="card-tabs mb-5">
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <a class="nav-link {{ request('complaint_type') == '' ? 'active' : '' }}"
+                    href="{{ url('/complaints') }}">
+                    📋 All
+                </a>
+            </li>
+
+
+            <!-- Complaint Types -->
+            @foreach ($complaintTypes as $type)
+                <li class="nav-item">
+
+                    <a class="nav-link {{ request('complaint_type') == $type ? 'active' : '' }}"
+                        href="{{ url('/complaints?complaint_type=' . urlencode($type)) }}">
+
+                        {{ $type }}
+
+                    </a>
+
+                </li>
+            @endforeach
+
+
+        </ul>
+    </div>
     <div class="card border-0 shadow-sm rounded-4">
 
         <div class="card-body">
@@ -220,7 +260,6 @@
                         </label>
 
                         <select name="complaint_type" class="form-select" required>
-
                             <option value="">
                                 Select Complaint Type
                             </option>

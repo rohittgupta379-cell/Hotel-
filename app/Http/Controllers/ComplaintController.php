@@ -10,9 +10,16 @@ class ComplaintController extends Controller
 {
     // Show all complaints
 
-    public function complaints()
+    public function complaints(Request $request)
     {
-        $complaints = Complaint::with('floorMap')->latest()->paginate(10);
+        $query = Complaint::with('floorMap');
+
+        // Complaint Type Filter
+        if ($request->complaint_type) {
+            $query->where('complaint_type', $request->complaint_type);
+        }
+
+        $complaints = $query->latest()->paginate(10);
 
         $rooms = FloorMap::where('is_available', 1)->get();
 
@@ -21,48 +28,49 @@ class ComplaintController extends Controller
 
 
 
-    public function complaintstore(Request $request)
-    {
-        $request->validate([
-            'room_id' => 'required',
-            'complaint_type' => 'required',
-            'complaint' => 'required',
-            'status' => 'required',
-        ]);
+    // store complaints
+     public function complaintstore(Request $request)
+     {
+         $request->validate([
+             'room_id' => 'required',
+             'complaint_type' => 'required',
+             'complaint' => 'required',
+             'status' => 'required',
+         ]);
 
-        Complaint::create([
-            'room_id' => $request->room_id,
-            'complaint_type' => $request->complaint_type,
-            'complaint' => $request->complaint,
-            'status' => $request->status,
-        ]);
+         Complaint::create([
+             'room_id' => $request->room_id,
+             'complaint_type' => $request->complaint_type,
+             'complaint' => $request->complaint,
+             'status' => $request->status,
+         ]);
+
+         return redirect()->back()
+    ->with('success', 'Complaint added successfully');
+     }
+
+
+    //  update  complaints
+     public function updateStatus(Request $request, $id)
+     {
+         $complaint = Complaint::findOrFail($id);
+
+         $complaint->update([
+             'status' => $request->status,
+         ]);
+
+         return back()->with('success', 'Complaint updated successfully');
+     }
+
+
+    //  delete complaints
+    public function destroy($id)
+    {
+        $complaint = Complaint::findOrFail($id);
+
+        $complaint->delete();
 
         return redirect()->back()
-    ->with('success', 'Complaint added successfully');
+            ->with('success', 'Complaint deleted successfully');
     }
-
-
-
-    public function updateStatus(Request $request, $id)
-{
-    $complaint = Complaint::findOrFail($id);
-
-    $complaint->update([
-        'status' => $request->status
-    ]);
-
-    return back()->with('success','Complaint updated successfully');
-}
-
-
-
-public function destroy($id)
-{
-    $complaint = Complaint::findOrFail($id);
-
-    $complaint->delete();
-
-    return redirect()->back()
-        ->with('success', 'Complaint deleted successfully');
-}
 }
