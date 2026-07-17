@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Booking;
+use App\Models\Expense;
 use App\Models\FloorMap;
 use Illuminate\Http\Request;
 
@@ -73,6 +74,62 @@ class PaymentController extends Controller
 
         return redirect()->back()->with('success', 'Payment marked as Paid.');
     }
- 
-    
+
+    // expensepayment
+    public function expensepayment(Request $request)
+    {
+        $expenses = Expense::query();
+
+        if ($request->filled('search')) {
+            $expenses->where('title', 'like', '%'.$request->search.'%');
+        }
+
+        if ($request->filled('type')) {
+            $expenses->where('type', $request->type);
+        }
+
+        if ($request->filled('from_date') && $request->filled('to_date')) {
+            $expenses->whereBetween('date', [
+                $request->from_date,
+                $request->to_date,
+            ]);
+        }
+
+        $expenses = $expenses->latest()->paginate(10);
+
+        return view('expensepayment', compact('expenses'));
+    }
+
+public function store(Request $request)
+{
+    $request->validate([
+        'title' => 'required',
+        'description' => 'nullable',
+        'type' => 'required',
+        'amount' => 'required|numeric',
+        'date' => 'required|date',
+    ]);
+
+    Expense::create([
+        'title' => $request->title,
+        'description' => $request->description,
+        'type' => $request->type,
+        'amount' => $request->amount,
+        'date' => $request->date,
+    ]);
+
+    return back()->with('success', 'Expense added successfully.');
+}
+
+public function destroy($id)
+{
+    $expense = Expense::findOrFail($id);
+
+    $expense->delete();
+
+    return redirect()->route('expenses.index')
+        ->with('success', 'Expense deleted successfully.');
+}
+
+   
 }

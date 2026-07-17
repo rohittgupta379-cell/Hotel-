@@ -9,7 +9,15 @@ use App\Http\Controllers\FoodOrderController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MapController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\RoleController;
 use Illuminate\Support\Facades\Route;
+use App\Models\FoodCategory;
+
+
+
+Route::middleware('auth')->group(function () {
+
 
 Route::get('/', [HomeController::class, 'home']);
 
@@ -82,3 +90,42 @@ Route::post('/food-bills/{id}/mark-delivered', [FoodBillController::class, 'mark
 // Delete Bill
 Route::delete('/food-bills/{id}', [FoodBillController::class, 'destroy'])
     ->name('food.bill.delete');
+
+
+
+    // expense
+Route::get('/expense', [PaymentController::class, 'expensepayment']);
+Route::get('/expenses', [PaymentController::class, 'expensepayment'])
+    ->name('expenses.index');
+Route::post('/expense/store', [PaymentController::class, 'store'])->name('expense.store'); 
+Route::delete('/expenses/delete/{id}', [PaymentController::class, 'destroy'])
+    ->name('expenses.destroy');   
+
+
+
+
+
+     //  role
+
+ Route::get('/role', [RoleController::class, 'roles']);
+
+
+Route::post('/roles/store', [RoleController::class, 'store'])->name('roles.store');
+
+Route::put('/roles/update/{id}', [RoleController::class, 'update'])->name('roles.update');
+
+Route::delete('/roles/delete/{id}', [RoleController::class, 'destroy'])->name('roles.destroy');
+    
+
+});
+
+
+
+Route::get('/login', [AuthController::class, 'login'])->name('login');
+Route::post('/login', [AuthController::class, 'loginUser'])->name('login.submit');
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+Route::post('/food-order', [FoodOrderController::class, 'orderFood']);
+Route::get('/food-menu',function(){
+    $categories = FoodCategory::with('foods')->get();
+    return view('food-menu', compact('categories'));
+});

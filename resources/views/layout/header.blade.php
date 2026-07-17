@@ -963,7 +963,7 @@
                                     <span>Food Bills</span>
                                 </a>
                             </li>
-                            <li><a href="#">Expense</a></li>
+                            <li><a href="{{ url('expense') }}">Expense</a></li>
                         </ul>
                     </li>
 
@@ -973,6 +973,14 @@
                         </a>
                     </li>
 
+
+                    {{-- role --}}
+                    <li>
+                        <a href="{{ url('role') }}" class="ai-icon" aria-expanded="false">
+                            <i class="flaticon-013-checkmark"></i>
+                            <span class="nav-text">Role</span>
+                        </a>
+                    </li>
 
 
                 </ul>
