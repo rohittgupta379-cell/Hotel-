@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\RolewaiseAuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,3 +27,6 @@ Route::get('/get-booking-info/{id}', [BookingController::class, 'bookingInfo']);
 Route::get('/get-user/{id}', [UserController::class, 'getUser']);
 
 
+Route::post('/giveAccessPage/{id}', [RolewaiseAuthController::class,'giveAccess']);
+Route::post('/denyAccessPage/{id}', [RolewaiseAuthController::class,'denyAccess']);
+Route::get('/authentication/{id}', [RolewaiseAuthController::class,'getRoleAuthentication']);

@@ -31,6 +31,7 @@
     <link rel="stylesheet" href="vendor/chartist/css/chartist.min.css">
     <link href="vendor/jquery-nice-select/css/nice-select.css" rel="stylesheet">
     <link href="vendor/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
     <!-- Style css -->
     <link href="css/style.css" rel="stylesheet">
 

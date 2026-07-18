@@ -76,14 +76,6 @@
                                                 value="hello@example.com" placeholder="">
                                         </div>
 
-
-                                        <div class="mb-3">
-                                            <label class="mb-1"><strong>Role</strong></label>
-                                            <input type="role" class="form-control" name="role"
-                                                placeholder="admin, user, etc">
-                                        </div>
-
-
                                         <div class="mb-3 position-relative">
                                             <label class="mb-1"><strong>Password</strong></label>
                                             <input type="password" id="dz-password" name="password" class="form-control"

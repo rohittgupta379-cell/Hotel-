@@ -1,13 +1,13 @@
  </div>
-<!--**********************************
+ <!--**********************************
             Footer start
         ***********************************-->
  <div class="footer">
 
- <div class="copyright">
- <p>Copyright © Designed &amp; Developed by <a href="https://dexignzone.com/" target="_blank">DexignZone</a> 2023
- </p>
- </div>
+     <div class="copyright">
+         <p>Copyright © Designed &amp; Developed by <a href="https://dexignzone.com/" target="_blank">DexignZone</a> 2023
+         </p>
+     </div>
  </div>
  <!--**********************************
             Footer end
@@ -50,7 +50,7 @@
 
  <script src="vendor/bootstrap-datetimepicker/js/moment.js"></script>
  <script src="vendor/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
-
+ <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
  <!-- Dashboard 1 -->
  <script src="js/dashboard/dashboard-1.js"></script>
  <script src="js/custom.min.js"></script>
@@ -58,6 +58,12 @@
 
 
  <script>
+     var notyf = new Notyf({
+         position: {
+             x: 'right',
+             y: 'top'
+         }
+     });
      $(function() {
          $('#datetimepicker').datetimepicker({
              inline: true,
