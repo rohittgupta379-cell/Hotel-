@@ -18,13 +18,13 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-    'name',
-    'email',
-    'phone',
-    'role_id',
-    'password',
-];
-    
+        'name',
+        'email',
+        'phone',
+        'role_id',
+        'password',
+    ];
+
 
     /**
      * The attributes that should be hidden for serialization.
@@ -48,5 +48,10 @@ class User extends Authenticatable
     public function role()
     {
         return $this->belongsTo(Role::class, 'role_id');
+    }
+
+    public function authorizedPages()
+    {
+        return $this->hasManyThrough(Page::class, RolePageAccess::class, 'role_id', 'id', 'role_id', 'page_id');
     }
 }

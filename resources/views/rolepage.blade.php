@@ -84,7 +84,7 @@
 
                         <td>{{ $role->role }}</td>
 
-                        <td>{{ $role->created_at->format('d M Y') }}</td>
+                        <td>{{ $role->created_at }}</td>
 
                         <td>
 

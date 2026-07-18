@@ -12,6 +12,7 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\RolewaiseAuthController;
 use Illuminate\Support\Facades\Route;
 use App\Models\FoodCategory;
 
@@ -120,6 +121,7 @@ Route::post('/users', [UserController::class, 'store'])->name('users.store');
 Route::post('/update-user', [UserController::class, 'update'])->name('users.update');
 
 
+Route::get('/authentication', [RolewaiseAuthController::class,'index']);
 });
 
 
