@@ -12,4 +12,9 @@ class Role extends Model
     protected $fillable = [
         'role',
     ];
+
+    public function pages()
+    {
+        return $this->belongsToMany(Page::class, 'role_page_access');
+    }
 }

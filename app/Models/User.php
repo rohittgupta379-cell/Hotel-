@@ -54,4 +54,12 @@ class User extends Authenticatable
     {
         return $this->hasManyThrough(Page::class, RolePageAccess::class, 'role_id', 'id', 'role_id', 'page_id');
     }
+
+    public function hasPageAccess($slug)
+    {
+        if ($this->role_id == 1) {
+            return true;
+        }
+        return $this->authorizedPages()->where('slug', $slug)->exists();
+    }
 }

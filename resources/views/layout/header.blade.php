@@ -87,637 +87,6 @@
             Nav header end
         ***********************************-->
 
-        <!--**********************************
-            Chat box start
-        ***********************************-->
-        <div class="chatbox">
-            <div class="chatbox-close"></div>
-            <div class="custom-tab-1">
-                <ul class="nav nav-tabs">
-                    <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="tab" href="#notes">Notes</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="tab" href="#alerts">Alerts</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" data-bs-toggle="tab" href="#chat">Chat</a>
-                    </li>
-                </ul>
-                <div class="tab-content">
-                    <div class="tab-pane fade active show" id="chat" role="tabpanel">
-                        <div class="card mb-sm-3 mb-md-0 contacts_card dz-chat-user-box">
-                            <div class="card-header chat-list-header text-center">
-                                <a href="javascript:void(0);"><svg xmlns="http://www.w3.org/2000/svg"
-                                        xmlns:xlink="http://www.w3.org/1999/xlink" width="18px" height="18px"
-                                        viewBox="0 0 24 24" version="1.1">
-                                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                            <rect fill="#000000" x="4" y="11" width="16" height="2"
-                                                rx="1" />
-                                            <rect fill="#000000" opacity="0.3"
-                                                transform="translate(12.000000, 12.000000) rotate(-270.000000) translate(-12.000000, -12.000000) "
-                                                x="4" y="11" width="16" height="2" rx="1" />
-                                        </g>
-                                    </svg></a>
-                                <div>
-                                    <h6 class="mb-1">Chat List</h6>
-                                    <p class="mb-0">Show All</p>
-                                </div>
-                                <a href="javascript:void(0);"><svg xmlns="http://www.w3.org/2000/svg"
-                                        xmlns:xlink="http://www.w3.org/1999/xlink" width="18px" height="18px"
-                                        viewBox="0 0 24 24" version="1.1">
-                                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                            <rect x="0" y="0" width="24" height="24" />
-                                            <circle fill="#000000" cx="5" cy="12" r="2" />
-                                            <circle fill="#000000" cx="12" cy="12" r="2" />
-                                            <circle fill="#000000" cx="19" cy="12" r="2" />
-                                        </g>
-                                    </svg></a>
-                            </div>
-                            <div class="card-body contacts_body p-0 dz-scroll  " id="DZ_W_Contacts_Body">
-                                <ul class="contacts">
-                                    <li class="name-first-letter">A</li>
-                                    <li class="active dz-chat-user">
-                                        <div class="d-flex bd-highlight">
-                                            <div class="img_cont">
-                                                <img src="images/avatar/1.jpg" class="rounded-circle user_img"
-                                                    alt="">
-                                                <span class="online_icon"></span>
-                                            </div>
-                                            <div class="user_info">
-                                                <span>Archie Parker</span>
-                                                <p>Kalid is online</p>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="dz-chat-user">
-                                        <div class="d-flex bd-highlight">
-                                            <div class="img_cont">
-                                                <img src="images/avatar/2.jpg" class="rounded-circle user_img"
-                                                    alt="">
-                                                <span class="online_icon offline"></span>
-                                            </div>
-                                            <div class="user_info">
-                                                <span>Alfie Mason</span>
-                                                <p>Taherah left 7 mins ago</p>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="dz-chat-user">
-                                        <div class="d-flex bd-highlight">
-                                            <div class="img_cont">
-                                                <img src="images/avatar/3.jpg" class="rounded-circle user_img"
-                                                    alt="">
-                                                <span class="online_icon"></span>
-                                            </div>
-                                            <div class="user_info">
-                                                <span>AharlieKane</span>
-                                                <p>Sami is online</p>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="dz-chat-user">
-                                        <div class="d-flex bd-highlight">
-                                            <div class="img_cont">
-                                                <img src="images/avatar/4.jpg" class="rounded-circle user_img"
-                                                    alt="">
-                                                <span class="online_icon offline"></span>
-                                            </div>
-                                            <div class="user_info">
-                                                <span>Athan Jacoby</span>
-                                                <p>Nargis left 30 mins ago</p>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="name-first-letter">B</li>
-                                    <li class="dz-chat-user">
-                                        <div class="d-flex bd-highlight">
-                                            <div class="img_cont">
-                                                <img src="images/avatar/5.jpg" class="rounded-circle user_img"
-                                                    alt="">
-                                                <span class="online_icon offline"></span>
-                                            </div>
-                                            <div class="user_info">
-                                                <span>Bashid Samim</span>
-                                                <p>Rashid left 50 mins ago</p>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="dz-chat-user">
-                                        <div class="d-flex bd-highlight">
-                                            <div class="img_cont">
-                                                <img src="images/avatar/1.jpg" class="rounded-circle user_img"
-                                                    alt="">
-                                                <span class="online_icon"></span>
-                                            </div>
-                                            <div class="user_info">
-                                                <span>Breddie Ronan</span>
-                                                <p>Kalid is online</p>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="dz-chat-user">
-                                        <div class="d-flex bd-highlight">
-                                            <div class="img_cont">
-                                                <img src="images/avatar/2.jpg" class="rounded-circle user_img"
-                                                    alt="">
-                                                <span class="online_icon offline"></span>
-                                            </div>
-                                            <div class="user_info">
-                                                <span>Ceorge Carson</span>
-                                                <p>Taherah left 7 mins ago</p>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="name-first-letter">D</li>
-                                    <li class="dz-chat-user">
-                                        <div class="d-flex bd-highlight">
-                                            <div class="img_cont">
-                                                <img src="images/avatar/3.jpg" class="rounded-circle user_img"
-                                                    alt="">
-                                                <span class="online_icon"></span>
-                                            </div>
-                                            <div class="user_info">
-                                                <span>Darry Parker</span>
-                                                <p>Sami is online</p>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="dz-chat-user">
-                                        <div class="d-flex bd-highlight">
-                                            <div class="img_cont">
-                                                <img src="images/avatar/4.jpg" class="rounded-circle user_img"
-                                                    alt="">
-                                                <span class="online_icon offline"></span>
-                                            </div>
-                                            <div class="user_info">
-                                                <span>Denry Hunter</span>
-                                                <p>Nargis left 30 mins ago</p>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="name-first-letter">J</li>
-                                    <li class="dz-chat-user">
-                                        <div class="d-flex bd-highlight">
-                                            <div class="img_cont">
-                                                <img src="images/avatar/5.jpg" class="rounded-circle user_img"
-                                                    alt="">
-                                                <span class="online_icon offline"></span>
-                                            </div>
-                                            <div class="user_info">
-                                                <span>Jack Ronan</span>
-                                                <p>Rashid left 50 mins ago</p>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="dz-chat-user">
-                                        <div class="d-flex bd-highlight">
-                                            <div class="img_cont">
-                                                <img src="images/avatar/1.jpg" class="rounded-circle user_img"
-                                                    alt="">
-                                                <span class="online_icon"></span>
-                                            </div>
-                                            <div class="user_info">
-                                                <span>Jacob Tucker</span>
-                                                <p>Kalid is online</p>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="dz-chat-user">
-                                        <div class="d-flex bd-highlight">
-                                            <div class="img_cont">
-                                                <img src="images/avatar/2.jpg" class="rounded-circle user_img"
-                                                    alt="">
-                                                <span class="online_icon offline"></span>
-                                            </div>
-                                            <div class="user_info">
-                                                <span>James Logan</span>
-                                                <p>Taherah left 7 mins ago</p>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="dz-chat-user">
-                                        <div class="d-flex bd-highlight">
-                                            <div class="img_cont">
-                                                <img src="images/avatar/3.jpg" class="rounded-circle user_img"
-                                                    alt="">
-                                                <span class="online_icon"></span>
-                                            </div>
-                                            <div class="user_info">
-                                                <span>Joshua Weston</span>
-                                                <p>Sami is online</p>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="name-first-letter">O</li>
-                                    <li class="dz-chat-user">
-                                        <div class="d-flex bd-highlight">
-                                            <div class="img_cont">
-                                                <img src="images/avatar/4.jpg" class="rounded-circle user_img"
-                                                    alt="">
-                                                <span class="online_icon offline"></span>
-                                            </div>
-                                            <div class="user_info">
-                                                <span>Oliver Acker</span>
-                                                <p>Nargis left 30 mins ago</p>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="dz-chat-user">
-                                        <div class="d-flex bd-highlight">
-                                            <div class="img_cont">
-                                                <img src="images/avatar/5.jpg" class="rounded-circle user_img"
-                                                    alt="">
-                                                <span class="online_icon offline"></span>
-                                            </div>
-                                            <div class="user_info">
-                                                <span>Oscar Weston</span>
-                                                <p>Rashid left 50 mins ago</p>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="card chat dz-chat-history-box d-none">
-                            <div class="card-header chat-list-header text-center">
-                                <a href="javascript:void(0);" class="dz-chat-history-back">
-                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                                        width="18px" height="18px" viewBox="0 0 24 24" version="1.1">
-                                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                            <polygon points="0 0 24 0 24 24 0 24" />
-                                            <rect fill="#000000" opacity="0.3"
-                                                transform="translate(15.000000, 12.000000) scale(-1, 1) rotate(-90.000000) translate(-15.000000, -12.000000) "
-                                                x="14" y="7" width="2" height="10" rx="1" />
-                                            <path
-                                                d="M3.7071045,15.7071045 C3.3165802,16.0976288 2.68341522,16.0976288 2.29289093,15.7071045 C1.90236664,15.3165802 1.90236664,14.6834152 2.29289093,14.2928909 L8.29289093,8.29289093 C8.67146987,7.914312 9.28105631,7.90106637 9.67572234,8.26284357 L15.6757223,13.7628436 C16.0828413,14.136036 16.1103443,14.7686034 15.7371519,15.1757223 C15.3639594,15.5828413 14.7313921,15.6103443 14.3242731,15.2371519 L9.03007346,10.3841355 L3.7071045,15.7071045 Z"
-                                                fill="#000000" fill-rule="nonzero"
-                                                transform="translate(9.000001, 11.999997) scale(-1, -1) rotate(90.000000) translate(-9.000001, -11.999997) " />
-                                        </g>
-                                    </svg>
-                                </a>
-                                <div>
-                                    <h6 class="mb-1">Chat with Khelesh</h6>
-                                    <p class="mb-0 text-success">Online</p>
-                                </div>
-                                <div class="dropdown">
-                                    <a href="javascript:void(0);" data-bs-toggle="dropdown"
-                                        aria-expanded="false"><svg xmlns="http://www.w3.org/2000/svg"
-                                            xmlns:xlink="http://www.w3.org/1999/xlink" width="18px" height="18px"
-                                            viewBox="0 0 24 24" version="1.1">
-                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                                <rect x="0" y="0" width="24" height="24" />
-                                                <circle fill="#000000" cx="5" cy="12" r="2" />
-                                                <circle fill="#000000" cx="12" cy="12" r="2" />
-                                                <circle fill="#000000" cx="19" cy="12" r="2" />
-                                            </g>
-                                        </svg></a>
-                                    <ul class="dropdown-menu dropdown-menu-end">
-                                        <li class="dropdown-item"><i class="fa fa-user-circle text-primary me-2"></i>
-                                            View profile</li>
-                                        <li class="dropdown-item"><i class="fa fa-users text-primary me-2"></i> Add to
-                                            btn-close friends</li>
-                                        <li class="dropdown-item"><i class="fa fa-plus text-primary me-2"></i> Add to
-                                            group</li>
-                                        <li class="dropdown-item"><i class="fa fa-ban text-primary me-2"></i> Block
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="card-body msg_card_body dz-scroll" id="DZ_W_Contacts_Body3">
-                                <div class="d-flex justify-content-start mb-4">
-                                    <div class="img_cont_msg">
-                                        <img src="images/avatar/1.jpg" class="rounded-circle user_img_msg"
-                                            alt="">
-                                    </div>
-                                    <div class="msg_cotainer">
-                                        Hi, how are you samim?
-                                        <span class="msg_time">8:40 AM, Today</span>
-                                    </div>
-                                </div>
-                                <div class="d-flex justify-content-end mb-4">
-                                    <div class="msg_cotainer_send">
-                                        Hi Khalid i am good tnx how about you?
-                                        <span class="msg_time_send">8:55 AM, Today</span>
-                                    </div>
-                                    <div class="img_cont_msg">
-                                        <img src="images/avatar/2.jpg" class="rounded-circle user_img_msg"
-                                            alt="">
-                                    </div>
-                                </div>
-                                <div class="d-flex justify-content-start mb-4">
-                                    <div class="img_cont_msg">
-                                        <img src="images/avatar/1.jpg" class="rounded-circle user_img_msg"
-                                            alt="">
-                                    </div>
-                                    <div class="msg_cotainer">
-                                        I am good too, thank you for your chat template
-                                        <span class="msg_time">9:00 AM, Today</span>
-                                    </div>
-                                </div>
-                                <div class="d-flex justify-content-end mb-4">
-                                    <div class="msg_cotainer_send">
-                                        You are welcome
-                                        <span class="msg_time_send">9:05 AM, Today</span>
-                                    </div>
-                                    <div class="img_cont_msg">
-                                        <img src="images/avatar/2.jpg" class="rounded-circle user_img_msg"
-                                            alt="">
-                                    </div>
-                                </div>
-                                <div class="d-flex justify-content-start mb-4">
-                                    <div class="img_cont_msg">
-                                        <img src="images/avatar/1.jpg" class="rounded-circle user_img_msg"
-                                            alt="">
-                                    </div>
-                                    <div class="msg_cotainer">
-                                        I am looking for your next templates
-                                        <span class="msg_time">9:07 AM, Today</span>
-                                    </div>
-                                </div>
-                                <div class="d-flex justify-content-end mb-4">
-                                    <div class="msg_cotainer_send">
-                                        Ok, thank you have a good day
-                                        <span class="msg_time_send">9:10 AM, Today</span>
-                                    </div>
-                                    <div class="img_cont_msg">
-                                        <img src="images/avatar/2.jpg" class="rounded-circle user_img_msg"
-                                            alt="">
-                                    </div>
-                                </div>
-                                <div class="d-flex justify-content-start mb-4">
-                                    <div class="img_cont_msg">
-                                        <img src="images/avatar/1.jpg" class="rounded-circle user_img_msg"
-                                            alt="">
-                                    </div>
-                                    <div class="msg_cotainer">
-                                        Bye, see you
-                                        <span class="msg_time">9:12 AM, Today</span>
-                                    </div>
-                                </div>
-                                <div class="d-flex justify-content-start mb-4">
-                                    <div class="img_cont_msg">
-                                        <img src="images/avatar/1.jpg" class="rounded-circle user_img_msg"
-                                            alt="">
-                                    </div>
-                                    <div class="msg_cotainer">
-                                        Hi, how are you samim?
-                                        <span class="msg_time">8:40 AM, Today</span>
-                                    </div>
-                                </div>
-                                <div class="d-flex justify-content-end mb-4">
-                                    <div class="msg_cotainer_send">
-                                        Hi Khalid i am good tnx how about you?
-                                        <span class="msg_time_send">8:55 AM, Today</span>
-                                    </div>
-                                    <div class="img_cont_msg">
-                                        <img src="images/avatar/2.jpg" class="rounded-circle user_img_msg"
-                                            alt="">
-                                    </div>
-                                </div>
-                                <div class="d-flex justify-content-start mb-4">
-                                    <div class="img_cont_msg">
-                                        <img src="images/avatar/1.jpg" class="rounded-circle user_img_msg"
-                                            alt="">
-                                    </div>
-                                    <div class="msg_cotainer">
-                                        I am good too, thank you for your chat template
-                                        <span class="msg_time">9:00 AM, Today</span>
-                                    </div>
-                                </div>
-                                <div class="d-flex justify-content-end mb-4">
-                                    <div class="msg_cotainer_send">
-                                        You are welcome
-                                        <span class="msg_time_send">9:05 AM, Today</span>
-                                    </div>
-                                    <div class="img_cont_msg">
-                                        <img src="images/avatar/2.jpg" class="rounded-circle user_img_msg"
-                                            alt="">
-                                    </div>
-                                </div>
-                                <div class="d-flex justify-content-start mb-4">
-                                    <div class="img_cont_msg">
-                                        <img src="images/avatar/1.jpg" class="rounded-circle user_img_msg"
-                                            alt="">
-                                    </div>
-                                    <div class="msg_cotainer">
-                                        I am looking for your next templates
-                                        <span class="msg_time">9:07 AM, Today</span>
-                                    </div>
-                                </div>
-                                <div class="d-flex justify-content-end mb-4">
-                                    <div class="msg_cotainer_send">
-                                        Ok, thank you have a good day
-                                        <span class="msg_time_send">9:10 AM, Today</span>
-                                    </div>
-                                    <div class="img_cont_msg">
-                                        <img src="images/avatar/2.jpg" class="rounded-circle user_img_msg"
-                                            alt="">
-                                    </div>
-                                </div>
-                                <div class="d-flex justify-content-start mb-4">
-                                    <div class="img_cont_msg">
-                                        <img src="images/avatar/1.jpg" class="rounded-circle user_img_msg"
-                                            alt="">
-                                    </div>
-                                    <div class="msg_cotainer">
-                                        Bye, see you
-                                        <span class="msg_time">9:12 AM, Today</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-footer type_msg">
-                                <div class="input-group">
-                                    <textarea class="form-control" placeholder="Type your message..."></textarea>
-                                    <div class="input-group-append">
-                                        <button type="button" class="btn btn-primary"><i
-                                                class="fa fa-location-arrow"></i></button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tab-pane fade" id="alerts" role="tabpanel">
-                        <div class="card mb-sm-3 mb-md-0 contacts_card">
-                            <div class="card-header chat-list-header text-center">
-                                <a href="javascript:void(0);"><svg xmlns="http://www.w3.org/2000/svg"
-                                        xmlns:xlink="http://www.w3.org/1999/xlink" width="18px" height="18px"
-                                        viewBox="0 0 24 24" version="1.1">
-                                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                            <rect x="0" y="0" width="24" height="24" />
-                                            <circle fill="#000000" cx="5" cy="12" r="2" />
-                                            <circle fill="#000000" cx="12" cy="12" r="2" />
-                                            <circle fill="#000000" cx="19" cy="12" r="2" />
-                                        </g>
-                                    </svg></a>
-                                <div>
-                                    <h6 class="mb-1">Notications</h6>
-                                    <p class="mb-0">Show All</p>
-                                </div>
-                                <a href="javascript:void(0);"><svg xmlns="http://www.w3.org/2000/svg"
-                                        xmlns:xlink="http://www.w3.org/1999/xlink" width="18px" height="18px"
-                                        viewBox="0 0 24 24" version="1.1">
-                                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                            <rect x="0" y="0" width="24" height="24" />
-                                            <path
-                                                d="M14.2928932,16.7071068 C13.9023689,16.3165825 13.9023689,15.6834175 14.2928932,15.2928932 C14.6834175,14.9023689 15.3165825,14.9023689 15.7071068,15.2928932 L19.7071068,19.2928932 C20.0976311,19.6834175 20.0976311,20.3165825 19.7071068,20.7071068 C19.3165825,21.0976311 18.6834175,21.0976311 18.2928932,20.7071068 L14.2928932,16.7071068 Z"
-                                                fill="#000000" fill-rule="nonzero" opacity="0.3" />
-                                            <path
-                                                d="M11,16 C13.7614237,16 16,13.7614237 16,11 C16,8.23857625 13.7614237,6 11,6 C8.23857625,6 6,8.23857625 6,11 C6,13.7614237 8.23857625,16 11,16 Z M11,18 C7.13400675,18 4,14.8659932 4,11 C4,7.13400675 7.13400675,4 11,4 C14.8659932,4 18,7.13400675 18,11 C18,14.8659932 14.8659932,18 11,18 Z"
-                                                fill="#000000" fill-rule="nonzero" />
-                                        </g>
-                                    </svg></a>
-                            </div>
-                            <div class="card-body contacts_body p-0 dz-scroll" id="DZ_W_Contacts_Body1">
-                                <ul class="contacts">
-                                    <li class="name-first-letter">SEVER STATUS</li>
-                                    <li class="active">
-                                        <div class="d-flex bd-highlight">
-                                            <div class="img_cont primary">KK</div>
-                                            <div class="user_info">
-                                                <span>David Nester Birthday</span>
-                                                <p class="text-primary">Today</p>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="name-first-letter">SOCIAL</li>
-                                    <li>
-                                        <div class="d-flex bd-highlight">
-                                            <div class="img_cont success">RU</div>
-                                            <div class="user_info">
-                                                <span>Perfection Simplified</span>
-                                                <p>Jame Smith commented on your status</p>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="name-first-letter">SEVER STATUS</li>
-                                    <li>
-                                        <div class="d-flex bd-highlight">
-                                            <div class="img_cont primary">AU</div>
-                                            <div class="user_info">
-                                                <span>AharlieKane</span>
-                                                <p>Sami is online</p>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="d-flex bd-highlight">
-                                            <div class="img_cont info">MO</div>
-                                            <div class="user_info">
-                                                <span>Athan Jacoby</span>
-                                                <p>Nargis left 30 mins ago</p>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="card-footer"></div>
-                        </div>
-                    </div>
-                    <div class="tab-pane fade" id="notes">
-                        <div class="card mb-sm-3 mb-md-0 note_card">
-                            <div class="card-header chat-list-header text-center">
-                                <a href="javascript:void(0);"><svg xmlns="http://www.w3.org/2000/svg"
-                                        xmlns:xlink="http://www.w3.org/1999/xlink" width="18px" height="18px"
-                                        viewBox="0 0 24 24" version="1.1">
-                                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                            <rect fill="#000000" x="4" y="11" width="16" height="2"
-                                                rx="1" />
-                                            <rect fill="#000000" opacity="0.3"
-                                                transform="translate(12.000000, 12.000000) rotate(-270.000000) translate(-12.000000, -12.000000) "
-                                                x="4" y="11" width="16" height="2" rx="1" />
-                                        </g>
-                                    </svg></a>
-                                <div>
-                                    <h6 class="mb-1">Notes</h6>
-                                    <p class="mb-0">Add New Nots</p>
-                                </div>
-                                <a href="javascript:void(0);"><svg xmlns="http://www.w3.org/2000/svg"
-                                        xmlns:xlink="http://www.w3.org/1999/xlink" width="18px" height="18px"
-                                        viewBox="0 0 24 24" version="1.1">
-                                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                            <rect x="0" y="0" width="24" height="24" />
-                                            <path
-                                                d="M14.2928932,16.7071068 C13.9023689,16.3165825 13.9023689,15.6834175 14.2928932,15.2928932 C14.6834175,14.9023689 15.3165825,14.9023689 15.7071068,15.2928932 L19.7071068,19.2928932 C20.0976311,19.6834175 20.0976311,20.3165825 19.7071068,20.7071068 C19.3165825,21.0976311 18.6834175,21.0976311 18.2928932,20.7071068 L14.2928932,16.7071068 Z"
-                                                fill="#000000" fill-rule="nonzero" opacity="0.3" />
-                                            <path
-                                                d="M11,16 C13.7614237,16 16,13.7614237 16,11 C16,8.23857625 13.7614237,6 11,6 C8.23857625,6 6,8.23857625 6,11 C6,13.7614237 8.23857625,16 11,16 Z M11,18 C7.13400675,18 4,14.8659932 4,11 C4,7.13400675 7.13400675,4 11,4 C14.8659932,4 18,7.13400675 18,11 C18,14.8659932 14.8659932,18 11,18 Z"
-                                                fill="#000000" fill-rule="nonzero" />
-                                        </g>
-                                    </svg></a>
-                            </div>
-                            <div class="card-body contacts_body p-0 dz-scroll" id="DZ_W_Contacts_Body2">
-                                <ul class="contacts">
-                                    <li class="active">
-                                        <div class="d-flex bd-highlight">
-                                            <div class="user_info">
-                                                <span>New order placed..</span>
-                                                <p>10 Aug 2020</p>
-                                            </div>
-                                            <div class="ms-auto">
-                                                <a href="javascript:void(0);"
-                                                    class="btn btn-primary btn-xs sharp me-1"><i
-                                                        class="fa fa-pencil-alt"></i></a>
-                                                <a href="javascript:void(0);" class="btn btn-danger btn-xs sharp"><i
-                                                        class="fa fa-trash"></i></a>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="d-flex bd-highlight">
-                                            <div class="user_info">
-                                                <span>Youtube, a video-sharing website..</span>
-                                                <p>10 Aug 2020</p>
-                                            </div>
-                                            <div class="ms-auto">
-                                                <a href="javascript:void(0);"
-                                                    class="btn btn-primary btn-xs sharp me-1"><i
-                                                        class="fa fa-pencil-alt"></i></a>
-                                                <a href="javascript:void(0);" class="btn btn-danger btn-xs sharp"><i
-                                                        class="fa fa-trash"></i></a>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="d-flex bd-highlight">
-                                            <div class="user_info">
-                                                <span>john just buy your product..</span>
-                                                <p>10 Aug 2020</p>
-                                            </div>
-                                            <div class="ms-auto">
-                                                <a href="javascript:void(0);"
-                                                    class="btn btn-primary btn-xs sharp me-1"><i
-                                                        class="fa fa-pencil-alt"></i></a>
-                                                <a href="javascript:void(0);" class="btn btn-danger btn-xs sharp"><i
-                                                        class="fa fa-trash"></i></a>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="d-flex bd-highlight">
-                                            <div class="user_info">
-                                                <span>Athan Jacoby</span>
-                                                <p>10 Aug 2020</p>
-                                            </div>
-                                            <div class="ms-auto">
-                                                <a href="javascript:void(0);"
-                                                    class="btn btn-primary btn-xs sharp me-1"><i
-                                                        class="fa fa-pencil-alt"></i></a>
-                                                <a href="javascript:void(0);" class="btn btn-danger btn-xs sharp"><i
-                                                        class="fa fa-trash"></i></a>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--**********************************
-            Chat box End
-        ***********************************-->
 
         <!--**********************************
             Header start
@@ -744,17 +113,6 @@
                                     <i id="icon-light" class="fas fa-sun"></i>
                                     <i id="icon-dark" class="fas fa-moon"></i>
 
-                                </a>
-                            </li>
-                            <li class="nav-item dropdown notification_dropdown">
-                                <a class="nav-link bell-link ai-icon" href="javascript:void(0);">
-                                    <svg width="24" height="22" viewBox="0 0 24 22" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path fill-rule="evenodd" clip-rule="evenodd"
-                                            d="M23.6667 5.16666C23.6667 2.5895 21.5772 0.5 19 0.5C15.1162 0.5 8.88387 0.5 5.00004 0.5C2.42287 0.5 0.333374 2.5895 0.333374 5.16666V20.3333C0.333374 20.8058 0.618046 21.2305 1.05321 21.4113C1.48955 21.5922 1.99121 21.4918 2.32487 21.1582C2.32487 21.1582 4.59287 18.8902 5.9672 17.517C6.4047 17.0795 6.99739 16.8333 7.61689 16.8333H19C21.5772 16.8333 23.6667 14.7438 23.6667 12.1667V5.16666ZM21.3334 5.16666C21.3334 3.87866 20.2892 2.83333 19 2.83333C15.1162 2.83333 8.88387 2.83333 5.00004 2.83333C3.71204 2.83333 2.66671 3.87866 2.66671 5.16666V17.517L4.31638 15.8673C5.19138 14.9923 6.37905 14.5 7.61689 14.5H19C20.2892 14.5 21.3334 13.4558 21.3334 12.1667V5.16666ZM6.16671 12.1667H15.5C16.144 12.1667 16.6667 11.644 16.6667 11C16.6667 10.356 16.144 9.83333 15.5 9.83333H6.16671C5.52271 9.83333 5.00004 10.356 5.00004 11C5.00004 11.644 5.52271 12.1667 6.16671 12.1667ZM6.16671 7.5H17.8334C18.4774 7.5 19 6.97733 19 6.33333C19 5.68933 18.4774 5.16666 17.8334 5.16666H6.16671C5.52271 5.16666 5.00004 5.68933 5.00004 6.33333C5.00004 6.97733 5.52271 7.5 6.16671 7.5Z"
-                                            fill="#1362FC" />
-                                    </svg>
-                                    <div class="pulse-css"></div>
                                 </a>
                             </li>
                             <li class="nav-item dropdown notification_dropdown">
@@ -849,8 +207,8 @@
                                     data-bs-toggle="dropdown">
                                     <img src="images/profile/pic1.jpg" alt="">
                                     <div class="header-info ms-3">
-                                        <span>John Doe</span>
-                                        <small>Superadmin</small>
+                                        <span>{{auth()->user()->name}}</span>
+                                        <small>{{auth()->user()->role->role}}</small>
                                     </div>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-end">
@@ -898,106 +256,128 @@
                             <span class="nav-text">Dashboard</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href="index.html">Dashboard Light</a></li>
-                            <li><a href="index-2.html">Dashboard Dark</a></li>
-                            <li><a href="guest-list.html">Guest</a></li>
-                            <li><a href="guest-detail.html">Guest Detail</a></li>
-                            <li><a href="concierge.html">Concierge</a></li>
-                            <li><a href="room-list.html">Room</a></li>
-                            <li><a href="reviews.html">Reviews</a></li>
+                            <li><a href="/">Dashboard</a></li>
+                            <li><a href="/room-dashboard">Room Dashboard</a></li>
+                            <li><a href="/payment-dashboard">Payment Dashboard</a></li>
+                            <li><a href="/complaint-dashboard">Complaint Dashboard</a></li>
+                            <li><a href="/food-dashboard">Food Dashboard</a></li>
                         </ul>
-
                     </li>
 
                     {{-- room management --}}
-                    <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
-                            <i class="flaticon-050-info"></i>
-                            <span class="nav-text">Room Management</span>
-                        </a>
-                        <ul aria-expanded="false">
-                            <li><a href="{{ url('floors') }}">Floors</a></li>
-                            <li><a href="{{ url('rooms') }}">Room Map</a></li>
-
-                        </ul>
-                    </li>
+                    @if (auth()->user()->hasPageAccess('floors') ||
+                            auth()->user()->hasPageAccess('room-manage') ||
+                            auth()->user()->hasPageAccess('rooms'))
+                        <li>
+                            <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+                                <i class="flaticon-050-info"></i>
+                                <span class="nav-text">Room Management</span>
+                            </a>
+                            <ul aria-expanded="false">
+                                @if (auth()->user()->hasPageAccess('floors') || auth()->user()->hasPageAccess('rooms'))
+                                    <li><a href="{{ url('floors') }}">Floors</a></li>
+                                @endif
+                                @if (auth()->user()->hasPageAccess('room-manage'))
+                                    <li><a href="{{ url('rooms') }}">Room Map</a></li>
+                                @endif
+                            </ul>
+                        </li>
+                    @endif
                     {{-- room management end --}}
 
 
-
-                    {{-- Booking history --}}
-                    <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
-                            <i class="flaticon-041-graph"></i>
-                            <span class="nav-text">Booking History</span>
-                        </a>
-                        <ul aria-expanded="false">
-                            <li><a href="{{ url('guest-history') }}">Guest History</a></li>
-
-
-                        </ul>
-                    </li>
+                    @if (auth()->user()->hasPageAccess('guest-history'))
+                        {{-- Booking history --}}
+                        <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+                                <i class="flaticon-041-graph"></i>
+                                <span class="nav-text">Booking History</span>
+                            </a>
+                            <ul aria-expanded="false">
+                                <li><a href="{{ url('guest-history') }}">Guest History</a></li>
+                            </ul>
+                        </li>
+                    @endif
                     {{-- Booking end history --}}
 
-                    {{-- food  Managment --}}
-                    <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
-                            <i class="flaticon-086-star"></i>
-                            <span class="nav-text">Food Managment</span>
-                        </a>
-                        <ul aria-expanded="false">
-                            <li>
-                                <a href="{{ route('food.category') }}">Food Category</a>
-                            </li>
-                            <li><a href="{{ url('foods') }}">Foods</a></li>
-                            <li><a href="{{ url('food-order') }}">Food Order</a></li>
+                    @if (auth()->user()->hasPageAccess('food-category') ||
+                            auth()->user()->hasPageAccess('food-order') ||
+                            auth()->user()->hasPageAccess('foods'))
+                        {{-- food  Managment --}}
+                        <li>
+                            <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+                                <i class="flaticon-086-star"></i>
+                                <span class="nav-text">Food Managment</span>
+                            </a>
+                            <ul aria-expanded="false">
+                                @if (auth()->user()->hasPageAccess('food-category'))
+                                    <li><a href="{{ route('food.category') }}">Food Category</a></li>
+                                @endif
+                                @if (auth()->user()->hasPageAccess('foods'))
+                                    <li><a href="{{ url('foods') }}">Foods</a></li>
+                                @endif
+                                @if (auth()->user()->hasPageAccess('food-order'))
+                                    <li><a href="{{ url('food-order') }}">Food Order</a></li>
+                                @endif
+                            </ul>
+                        </li>
+                    @endif
 
-                        </ul>
-                    </li>
 
+                    @if (auth()->user()->hasPageAccess('room-payment') ||
+                            auth()->user()->hasPageAccess('food-bills') ||
+                            auth()->user()->hasPageAccess('expense'))
                     <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
                             <i class="flaticon-086-star"></i>
                             <span class="nav-text">Bill Managment</span>
                         </a>
                         <ul aria-expanded="false">
+                            @if (auth()->user()->hasPageAccess('room-payment'))
                             <li><a href="{{ url('room-payment') }}">Hotel Bills</a></li>
-                            <li>
-                                <a href="{{ route('food.bills') }}">
-                                    <i class="fa fa-cutlery"></i>
-                                    <span>Food Bills</span>
-                                </a>
-                            </li>
+                            @endif
+                            @if (auth()->user()->hasPageAccess('food-bills'))
+                            <li><a href="{{ route('food.bills') }}">Food Bills</a></li>
+                            @endif
+                            @if (auth()->user()->hasPageAccess('expense'))
                             <li><a href="{{ url('expense') }}">Expense</a></li>
+                            @endif
                         </ul>
                     </li>
+                    @endif
 
+                    @if (auth()->user()->hasPageAccess('complaints'))
                     <li><a href="{{ url('complaints') }}" class="ai-icon" aria-expanded="false">
                             <i class="flaticon-013-checkmark"></i>
                             <span class="nav-text">Complaint</span>
                         </a>
                     </li>
+                    @endif
 
 
+                     @if (auth()->user()->hasPageAccess('role') || auth()->user()->hasPageAccess('users'))
                     <li>
                         <a class="has-arrow ai-icon" href="javascript:void(0)" aria-expanded="false">
                             <i class="flaticon-041-graph"></i>
                             <span class="nav-text">User Management</span>
                         </a>
-
                         <ul aria-expanded="false">
-
-                            <li>
-                                <a href="{{ url('role') }}">
-                                    <i class="fa fa-user-tag"></i> Role
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="{{ url('users') }}">
-                                    <i class="fa fa-users"></i> Users
-                                </a>
-                            </li>
-
+                            @if (auth()->user()->hasPageAccess('role'))
+                            <li><a href="{{ url('role') }}">Role</a></li>
+                            @endif
+                            @if (auth()->user()->hasPageAccess('users'))
+                            <li><a href="{{ url('users') }}"> Users</a></li>
+                            @endif
                         </ul>
                     </li>
+                    @endif
 
+                    @if (auth()->user()->hasPageAccess('authentication'))
+                    <li>
+                        <a href="{{ url('authentication') }}" class="ai-icon" aria-expanded="false">
+                            <i class="flaticon-013-checkmark"></i>
+                            <span class="nav-text">Authentication</span>
+                        </a>
+                    </li>
+                    @endif
                 </ul>
                 <div class="copyright">
                     <p><strong>Innap Hotel Admin</strong> © {{ date('Y') }} All Rights Reserved</p>
