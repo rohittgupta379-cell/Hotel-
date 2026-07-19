@@ -32,6 +32,7 @@ Route::middleware('auth')->group(function () {
     });
 
     Route::middleware('page.access:rooms')->group(function () {
+        Route::get('/floors', [FloorController::class, 'viewFloors']);
         Route::post('/add-rooms', [FloorController::class, 'addRooms']);
         Route::post('/update-room', [FloorController::class, 'updateroom']);
         Route::get('/delete-room/{id}', [FloorController::class, 'deleteroom']);

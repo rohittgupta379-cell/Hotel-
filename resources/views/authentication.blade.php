@@ -17,6 +17,8 @@
         </div>
     </div>
 
+
+    {{-- table --}}
     <div class="card border-0 shadow-sm rounded-4">
         <div class="row">
             <div class="col-12">
@@ -73,7 +75,7 @@
         </div> <!-- end row-->
     </div>
 </div>
-<!-- Main Body End -->
+<!-- end table -->
 
 
 @include('layout.footer')
